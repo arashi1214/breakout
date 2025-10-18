@@ -33,9 +33,9 @@ func _physics_process(_delta: float) -> void:
 			if "rebound" not in collider_object.get_groups():
 				print("出界")
 				queue_free()
-
-			#print(move_y)
-
+				
+			if "bricks" in collider_object.get_groups():
+				collider_object.on_collision()
 
 # 暫時不使用計算偏移量
 func offset_distance(collision_point, collider_object):

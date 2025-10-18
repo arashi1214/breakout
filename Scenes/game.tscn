@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bhxt3vmqvotkb"]
 
 [ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
-[ext_resource type="Script" uid="uid://14ifxa523ybh" path="res://Objects/player.gd" id="2_qxrlw"]
+[ext_resource type="Script" uid="uid://14ifxa523ybh" path="res://Scripts/player.gd" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://1jhp6b8r32hp" path="res://Objects/ball.tscn" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://bu5l8vq2d2lv8" path="res://Objects/bricks.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" uid="uid://dh8nlpd3ccxm8" path="res://Controller/bricks_controller.tscn" id="5_wowpa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
 size = Vector2(63.5, 901)
@@ -50,5 +50,8 @@ motion_mode = 1
 floor_stop_on_slope = false
 safe_margin = 0.08
 
-[node name="bricks" parent="." instance=ExtResource("4_3dryh")]
-position = Vector2(191, 201)
+[node name="CreatePoint" type="Marker2D" parent="."]
+position = Vector2(64, 64)
+
+[node name="bricksController" parent="." node_paths=PackedStringArray("create_point") instance=ExtResource("5_wowpa")]
+create_point = NodePath("../CreatePoint")
