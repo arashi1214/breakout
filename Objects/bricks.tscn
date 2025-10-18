@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu5l8vq2d2lv8"]
+
+[ext_resource type="Script" uid="uid://ghultdoffb8n" path="res://Scripts/bricks.gd" id="1_08kef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhrbj"]
+size = Vector2(47, 25)
+
+[node name="bricks" type="StaticBody2D" groups=["bricks", "rebound"]]
+script = ExtResource("1_08kef")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-5, 0)
+color = Color(0.85860765, 0.509843, 0.26476187, 1)
+polygon = PackedVector2Array(5, 0, 5, 25, 52, 25, 52, 0)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(47, 0, 0, 0, 0, 25, 47, 25)
+closed = true
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(23.5, 12.5)
+shape = SubResource("RectangleShape2D_yhrbj")
