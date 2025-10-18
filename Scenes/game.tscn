@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhxt3vmqvotkb"]
+
+[ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://14ifxa523ybh" path="res://Objects/player.gd" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://1jhp6b8r32hp" path="res://Objects/ball.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://bu5l8vq2d2lv8" path="res://Objects/bricks.tscn" id="4_3dryh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
+size = Vector2(63.5, 901)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebmjs"]
+size = Vector2(834.5, 52.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
+size = Vector2(70, 904.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
+size = Vector2(836.5, 54.5)
+
+[node name="Game" type="Node2D"]
+
+[node name="Wall" type="StaticBody2D" parent="." groups=["Wall", "rebound"]]
+
+[node name="Left" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-33.25, 450.5)
+shape = SubResource("RectangleShape2D_2poj3")
+
+[node name="Top" type="CollisionShape2D" parent="Wall"]
+position = Vector2(354.75, -30)
+shape = SubResource("RectangleShape2D_ebmjs")
+
+[node name="Right" type="CollisionShape2D" parent="Wall"]
+position = Vector2(736, 448)
+shape = SubResource("RectangleShape2D_qxrlw")
+
+[node name="界外" type="StaticBody2D" parent="." groups=["Wall"]]
+
+[node name="Bottom" type="CollisionShape2D" parent="界外"]
+position = Vector2(353.75, 927.75)
+shape = SubResource("RectangleShape2D_wrm1d")
+
+[node name="Player" parent="." instance=ExtResource("1_ebmjs")]
+position = Vector2(311, 863)
+script = ExtResource("2_qxrlw")
+speed = 8
+
+[node name="ball" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(379, 769)
+motion_mode = 1
+floor_stop_on_slope = false
+safe_margin = 0.08
+
+[node name="bricks" parent="." instance=ExtResource("4_3dryh")]
+position = Vector2(191, 201)

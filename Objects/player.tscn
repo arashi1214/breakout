@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1iyi2bhsfpba"]
+
+[ext_resource type="Texture2D" uid="uid://clskfjq17kacj" path="res://Art/方塊.png" id="1_y0qk3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0qk3"]
+size = Vector2(182.72516, 40)
+
+[node name="Player" type="CharacterBody2D" groups=["rebound"]]
+scale = Vector2(0.7652265, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 183.0
+offset_bottom = 40.0
+texture = ExtResource("1_y0qk3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(91.58979, 20)
+shape = SubResource("RectangleShape2D_y0qk3")

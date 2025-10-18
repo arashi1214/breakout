@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://1jhp6b8r32hp"]
+
+[ext_resource type="Script" uid="uid://ca46ygjduvj7c" path="res://Objects/ball.gd" id="1_af24q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xykfd"]
+radius = 24.020824
+
+[node name="ball" type="CharacterBody2D"]
+safe_margin = 0.01
+script = ExtResource("1_af24q")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-18, 14, -14, 18, -1, 23, 8, 22, 18, 17, 23, 7, 24, -6, 18, -16, 12, -21, 6, -23, -3, -23, -10, -21, -16, -17, -22, -7, -23, 0, -22, 7)
+closed = true
+width = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_xykfd")
