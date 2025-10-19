@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bhxt3vmqvotkb"]
 
 [ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://ditbkl5ook2lk" path="res://Scripts/game_controller.gd" id="1_wowpa"]
 [ext_resource type="Script" uid="uid://14ifxa523ybh" path="res://Scripts/player.gd" id="2_qxrlw"]
-[ext_resource type="PackedScene" uid="uid://1jhp6b8r32hp" path="res://Objects/ball.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://dh8nlpd3ccxm8" path="res://Controller/bricks_controller.tscn" id="5_wowpa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
@@ -17,7 +17,9 @@ size = Vector2(70, 904.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
 size = Vector2(836.5, 54.5)
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node" node_paths=PackedStringArray("ball_birth_point")]
+script = ExtResource("1_wowpa")
+ball_birth_point = NodePath("CerateBallPoint")
 
 [node name="Wall" type="StaticBody2D" parent="." groups=["Wall", "rebound"]]
 
@@ -44,14 +46,11 @@ position = Vector2(311, 863)
 script = ExtResource("2_qxrlw")
 speed = 8
 
-[node name="ball" parent="." instance=ExtResource("3_wrm1d")]
-position = Vector2(379, 769)
-motion_mode = 1
-floor_stop_on_slope = false
-safe_margin = 0.08
-
 [node name="CreatePoint" type="Marker2D" parent="."]
 position = Vector2(64, 64)
+
+[node name="CerateBallPoint" type="Marker2D" parent="."]
+position = Vector2(379, 769)
 
 [node name="bricksController" parent="." node_paths=PackedStringArray("create_point") instance=ExtResource("5_wowpa")]
 create_point = NodePath("../CreatePoint")

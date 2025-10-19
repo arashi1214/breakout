@@ -5,6 +5,9 @@ extends Node
 @export var create_point : Marker2D
 
 func _ready() -> void:
+	create()
+
+func create():
 	var bricks = preload("res://Objects/bricks.tscn")
 	var create_point_position = create_point.position
 	
@@ -16,4 +19,4 @@ func _ready() -> void:
 			add_child(brick)
 			create_point_position.y += 25
 		create_point_position.y = create_point.position.y
-		create_point_position.x += 48
+		create_point_position.x += 48	
