@@ -4,7 +4,9 @@ var move_x = 0
 var move_y = 1
 var status = false
 @export var speed = 2
+
 signal out_of_bounds()
+signal get_score()
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("Space") and !status:
@@ -41,6 +43,7 @@ func _physics_process(_delta: float) -> void:
 					
 				if "bricks" in collider_object.get_groups():
 					collider_object.on_collision()
+					emit_signal("get_score")
 					speed += 0.5
 
 # 暫時不使用計算偏移量

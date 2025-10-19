@@ -2,9 +2,11 @@ extends CharacterBody2D
 
 @export var speed = 1
 var screen_size
+var start_position
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
+	start_position = position
 	
 func _physics_process(_delta):
 	var velocity = Vector2.ZERO
@@ -16,3 +18,6 @@ func _physics_process(_delta):
 		
 	position += velocity
 	position = position.clamp(Vector2.ZERO, Vector2(559, 900))
+
+func reset():
+	position = start_position

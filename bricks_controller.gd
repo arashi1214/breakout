@@ -20,3 +20,10 @@ func create():
 			create_point_position.y += 25
 		create_point_position.y = create_point.position.y
 		create_point_position.x += 48	
+
+func reset():
+	var all_children = get_children()
+	for child in all_children:
+		child.queue_free()
+		
+	create()

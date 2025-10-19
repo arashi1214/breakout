@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhxt3vmqvotkb"]
+[gd_scene load_steps=10 format=3 uid="uid://bhxt3vmqvotkb"]
 
 [ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://ditbkl5ook2lk" path="res://Scripts/game_controller.gd" id="1_wowpa"]
 [ext_resource type="Script" uid="uid://14ifxa523ybh" path="res://Scripts/player.gd" id="2_qxrlw"]
+[ext_resource type="Texture2D" uid="uid://khpiljcw2c5y" path="res://Art/kenney_cursor-pixel-pack/Tiles/tile_0013.png" id="5_i6g32"]
 [ext_resource type="PackedScene" uid="uid://dh8nlpd3ccxm8" path="res://Controller/bricks_controller.tscn" id="5_wowpa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
@@ -54,3 +55,30 @@ position = Vector2(379, 769)
 
 [node name="bricksController" parent="." node_paths=PackedStringArray("create_point") instance=ExtResource("5_wowpa")]
 create_point = NodePath("../CreatePoint")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 601.0
+offset_top = 3.0
+offset_right = 699.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="NewGame" type="TextureButton" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 345.0
+offset_top = 477.0
+offset_right = 385.0
+offset_bottom = 517.0
+texture_normal = ExtResource("5_i6g32")
+stretch_mode = 0
+
+[connection signal="button_down" from="UI/NewGame" to="." method="reset_game"]
