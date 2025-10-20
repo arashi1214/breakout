@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
+@export var speed = 2
+@export var brick_audio : AudioStreamOggVorbis
+@export var player_audio : AudioStreamOggVorbis
+
 var move_x = 0
 var move_y = 1
 var status = false
-@export var speed = 2
 
 signal out_of_bounds()
 signal get_score()
@@ -45,6 +48,13 @@ func _physics_process(_delta: float) -> void:
 					collider_object.on_collision()
 					emit_signal("get_score")
 					speed += 0.5
+					$AudioStreamPlayer.stream = brick_audio
+				else:
+					$AudioStreamPlayer.stream = player_audio
+					
+					
+				$AudioStreamPlayer.play()
+
 
 # 暫時不使用計算偏移量
 func offset_distance(collision_point, collider_object):
