@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://baxljljucuhr0"]
+
+[ext_resource type="Script" uid="uid://c81wkidkhb61t" path="res://Scripts/props.gd" id="1_b2und"]
+[ext_resource type="Texture2D" uid="uid://dgj8tmio3t7n0" path="res://Assets/kenney_cursor-pixel-pack/Tiles/tile_0001.png" id="1_cae2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cae2k"]
+size = Vector2(38.5, 25.875)
+
+[node name="Prop_long" type="Area2D"]
+script = ExtResource("1_b2und")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 36.0
+offset_bottom = 36.0
+texture = ExtResource("1_cae2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(19.75, 18.0625)
+shape = SubResource("RectangleShape2D_cae2k")

@@ -19,5 +19,15 @@ func _physics_process(_delta):
 	position += velocity
 	position = position.clamp(Vector2.ZERO, Vector2(559, 900))
 
+func useprop(prop_name):
+	match prop_name:
+		"Prop_long":
+			scale.x += 0.2
+			$CollisionShape2D.scale.x += 0.2
+		"Prop_short":
+			if scale.x >= 0.3:
+				scale.x -= 0.2
+				$CollisionShape2D.scale.x -= 0.2
+
 func reset():
 	position = start_position

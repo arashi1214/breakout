@@ -37,7 +37,6 @@ func _physics_process(_delta: float) -> void:
 				move_x = velocity.bounce(normal).x
 				move_y = velocity.bounce(normal).y
 					
-					
 				# 確認是否出界
 				if "rebound" not in collider_object.get_groups():
 					print("出界")
@@ -51,7 +50,6 @@ func _physics_process(_delta: float) -> void:
 					$AudioStreamPlayer.stream = brick_audio
 				else:
 					$AudioStreamPlayer.stream = player_audio
-					
 					
 				$AudioStreamPlayer.play()
 
