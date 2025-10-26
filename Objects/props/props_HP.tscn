@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cae2k"]
 size = Vector2(38.5, 25.875)
 
-[node name="Prop_short" type="Area2D"]
+[node name="Prop_HP" type="Area2D"]
 script = ExtResource("1_xy1l5")
 
 [node name="TextureRect" type="TextureRect" parent="."]

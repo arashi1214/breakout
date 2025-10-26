@@ -25,6 +25,7 @@ window/size/viewport_height=900
 rebound="球碰到會反彈的物件"
 Wall="牆壁"
 bricks="磚塊"
+player=""
 
 [input]
 

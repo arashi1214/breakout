@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0qk3"]
 size = Vector2(182.72516, 40)
 
-[node name="Player" type="CharacterBody2D" groups=["rebound"]]
+[node name="Player" type="CharacterBody2D" groups=["player", "rebound"]]
 scale = Vector2(0.7652265, 0.5)
 script = ExtResource("1_3y5cq")
 

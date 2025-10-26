@@ -22,7 +22,7 @@ size = Vector2(836.5, 54.5)
 script = ExtResource("1_wowpa")
 ball_birth_point = NodePath("CerateBallPoint")
 
-[node name="Wall" type="StaticBody2D" parent="." groups=["rebound"]]
+[node name="Wall" type="StaticBody2D" parent="." groups=["Wall", "rebound"]]
 
 [node name="Left" type="CollisionShape2D" parent="Wall"]
 position = Vector2(-33.25, 450.5)
