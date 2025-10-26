@@ -3,10 +3,12 @@ extends CharacterBody2D
 @export var speed = 1
 var screen_size
 var start_position
+var start_scale
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	start_position = position
+	start_scale = scale
 	
 	
 func _physics_process(_delta):
@@ -23,10 +25,14 @@ func _physics_process(_delta):
 func useprop(prop_name):
 	match prop_name:
 		"Prop_long":
-			scale.x += 0.2
+			if scale.x <= 2:
+				scale.x += 0.2
 		"Prop_short":
-			if scale.x >= 0.3:
+			if scale.x >= 0.2:
 				scale.x -= 0.2
+		_:
+			pass
 
 func reset():
 	position = start_position
+	scale = start_scale
