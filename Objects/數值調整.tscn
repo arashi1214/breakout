@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://donkwcm6jwiw2"]
+
+[ext_resource type="Script" uid="uid://b3ewv8po2p0on" path="res://Objects/ValueAdjustment.gd" id="1_5y6v8"]
+
+[node name="數值調整" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5y6v8")
+
+[node name="PlayerSpeed" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 485.0
+offset_right = 288.5625
+offset_bottom = 516.0
+max_value = 10.0
+value = 1.0
+rounded = true
+
+[node name="BallSpeed" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 488.0
+offset_right = 467.5625
+offset_bottom = 519.0
+min_value = 50.0
+max_value = 500.0
+value = 100.0
+rounded = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 447.0
+offset_right = 292.0
+offset_bottom = 470.0
+text = "Player speed"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 447.0
+offset_right = 461.0
+offset_bottom = 470.0
+text = "Ball speed"
+
+[connection signal="value_changed" from="PlayerSpeed" to="." method="_on_player_speed_value_changed"]
+[connection signal="value_changed" from="BallSpeed" to="." method="_on_ball_speed_value_changed"]

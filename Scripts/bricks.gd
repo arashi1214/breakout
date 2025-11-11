@@ -12,4 +12,4 @@ func on_collision():
 		emit_signal("disappear")
 		if prop_name:
 			emit_signal("has_prop", prop_name, position)
-		queue_free()
+		call_deferred("queue_free")

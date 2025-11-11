@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-@export var speed = 100
+
 @export var brick_audio : AudioStreamOggVorbis
 @export var player_audio : AudioStreamOggVorbis
 
 var status = false
 var previous_velocity = Vector2.ZERO
+var speed
 
 signal out_of_bounds()
 signal get_score()
@@ -36,8 +37,7 @@ func _physics_process(_delta: float) -> void:
 						velocity.y = previous_velocity.y * -1
 					elif abs(normal.x) > 0.9: # 左右碰撞 (磚塊側面)
 						velocity.x = previous_velocity.x * -1
-					
-					print("test")
+
 					emit_signal("get_score")
 					collider_object.on_collision()
 					

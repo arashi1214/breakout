@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhxt3vmqvotkb"]
+[gd_scene load_steps=11 format=3 uid="uid://bhxt3vmqvotkb"]
 
 [ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://ditbkl5ook2lk" path="res://Scripts/game_controller.gd" id="1_wowpa"]
 [ext_resource type="Texture2D" uid="uid://khpiljcw2c5y" path="res://Assets/kenney_cursor-pixel-pack/Tiles/tile_0013.png" id="5_i6g32"]
 [ext_resource type="PackedScene" uid="uid://dh8nlpd3ccxm8" path="res://Controller/bricks_controller.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://donkwcm6jwiw2" path="res://Objects/數值調整.tscn" id="6_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dqrq3qg5wiyma" path="res://Assets/Q版齊絨正面.png" id="6_i6g32"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
@@ -44,7 +45,6 @@ shape = SubResource("RectangleShape2D_wrm1d")
 
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
 position = Vector2(311, 863)
-speed = 8
 
 [node name="CreatePoint" type="Marker2D" parent="."]
 position = Vector2(64, 64)
@@ -96,5 +96,10 @@ texture = ExtResource("6_i6g32")
 position = Vector2(120, 30)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_i6g32")
+
+[node name="數值調整" parent="." node_paths=PackedStringArray("player", "GameController") instance=ExtResource("6_1l0tm")]
+visible = false
+player = NodePath("../Player")
+GameController = NodePath("..")
 
 [connection signal="button_down" from="UI/NewGame" to="." method="reset_game"]

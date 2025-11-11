@@ -6,6 +6,7 @@ extends Node
 @export var props_list : Array
 
 var total = 0
+signal GameClear()
 
 func _ready() -> void:
 	create()
@@ -18,11 +19,13 @@ func create():
 		for w in range(width):
 			var brick = bricks.instantiate()
 			brick.position = create_point_position
+			brick.disappear.connect(check_remain_bricks)
 			
+			# 如果有道具的話
 			if randi_range(0,100) % 2:
 				brick.prop_name = props_list[randi_range(0, len(props_list)-1)]
 				brick.has_prop.connect(drop_prop)
-				brick.disappear.connect(check_remain_bricks)
+				
 			
 			add_child(brick)
 			total += 1
@@ -38,8 +41,8 @@ func drop_prop(prop_name, prop_pos):
 
 func check_remain_bricks():
 	total -= 1
-	print(total)
 	if total == 0:
+		emit_signal("GameClear")
 		print("Game finish")
 
 func reset():
