@@ -1,7 +1,7 @@
 extends Resource
 class_name RandomTable
 
-# 出現率由小到大排列
+# 可自行修改出現項目的名稱與機率
 @export var items: Array[Dictionary] = [
 	{"name": "A", "weight": 1},
 	{"name": "B", "weight": 2},
@@ -21,9 +21,11 @@ func get_random() -> String:
 	if total <= 0:
 		return ""
 
-	# 隨機抽取
+	# 隨機取餘數
 	var r = randi() % total
 	var cumulative = 0
+	
+	# 以出現比例來定義各範圍區間，以確認抽選到哪一個項目
 	for item in items:
 		cumulative += item.get("weight", 0)
 		if r < cumulative:
