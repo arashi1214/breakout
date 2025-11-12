@@ -3,7 +3,9 @@ extends Node
 @export var hight = 12
 @export var width = 5
 @export var create_point : Marker2D
-@export var props_list : Array
+@export var brickstable : RandomTable
+@export var propstable : RandomTable
+
 
 var total = 0
 signal GameClear()
@@ -23,7 +25,7 @@ func create():
 			
 			# 如果有道具的話
 			if randi_range(0,100) % 2:
-				brick.prop_name = props_list[randi_range(0, len(props_list)-1)]
+				brick.prop_name = propstable.get_random()
 				brick.has_prop.connect(drop_prop)
 				
 			

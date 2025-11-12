@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RandomTable" load_steps=2 format=3 uid="uid://p4df6r7bftsp"]
+
+[ext_resource type="Script" uid="uid://qtvn36unaeep" path="res://Scripts/random_table.gd" id="1_n3ulh"]
+
+[resource]
+script = ExtResource("1_n3ulh")
+items = Array[Dictionary]([{
+"name": "props_long",
+"weight": 1
+}, {
+"name": "props_short",
+"weight": 2
+}, {
+"name": "props_HP",
+"weight": 1
+}])
+metadata/_custom_type_script = "uid://qtvn36unaeep"
