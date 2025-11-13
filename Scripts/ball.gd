@@ -86,10 +86,8 @@ const MAX_ANGLE_DEVIATION = deg_to_rad(75.0)
 const MIN_Y_FACTOR = 0.3 
 
 func apply_offset_to_velocity(normalized_offset: float) -> void:
-	# 1. 計算理想的目標角度
-	# 偏移量為 -1.0 應產生向左上 (例如 180 - 75 = 105 度)
-	# 偏移量為  1.0 應產生向右上 (例如 0 + 75 = 75 度)
-	# 由於 Godot 角度: 0度(右), -90度(上), 90度(下)
+	# 計算目標角度
+	# Godot 角度: 0度(右), -90度(上), 90度(下)
 	
 	# 計算角度：從純垂直向上 (-90 度) 開始偏移
 	var base_angle = deg_to_rad(-90.0) 
@@ -99,40 +97,22 @@ func apply_offset_to_velocity(normalized_offset: float) -> void:
 	
 	var new_angle = base_angle + angle_change
 	
-	# 2. 限制角度範圍 (確保球不會向下射)
-	# 向上飛行的合理範圍：-150度 到 -30度
+	# 限制角度範圍
 	var min_angle = deg_to_rad(-150.0) 
 	var max_angle = deg_to_rad(-30.0)
 	new_angle = clamp(new_angle, min_angle, max_angle)
 	
-	# 3. 確保 Y 軸分量足夠大
-	# 計算基於新角度的暫定速度向量
 	var temp_velocity = Vector2.from_angle(new_angle) * speed
 	
-	# 如果 Y 軸速度（向上的絕對值）太小，強制修正 Y 軸速度
-	# velocity.y 是負值 (向上)，所以我們用 abs()
 	if abs(temp_velocity.y) < speed * MIN_Y_FACTOR:
-		# 保持 X 軸方向，但強制 Y 軸速度為 MIN_Y_FACTOR * speed
 		var enforced_y_speed = speed * MIN_Y_FACTOR
-		
-		# 重新計算 X 軸速度，保持總速度大小不變
+	
 		# X = sqrt(Speed^2 - Y^2)
 		var enforced_x_speed = sqrt(speed * speed - enforced_y_speed * enforced_y_speed)
 		
-		# 應用修正：保持 X 軸的原方向
 		velocity.x = enforced_x_speed * sign(temp_velocity.x)
-		# 應用修正：保持 Y 軸為負值 (向上)
 		velocity.y = -enforced_y_speed
 		
 	else:
-		# 如果 Y 軸速度足夠大，直接使用新角度
 		velocity = temp_velocity
-		
-	# 4. 最終鎖定速度大小 (這是一個安全檢查，但應該已經處理了)
-	velocity = velocity.normalized() * speed
-
-
-'''
-1. 球從下往上打的時候，不會往下反彈，會繼續向上的問題
-2. 加速度後，碰到底下出界區域，會直接多次判斷，導致整個死亡
-'''
+	#velocity = velocity.normalized() * speed

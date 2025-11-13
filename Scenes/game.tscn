@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhxt3vmqvotkb"]
+[gd_scene load_steps=12 format=3 uid="uid://bhxt3vmqvotkb"]
 
 [ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://ditbkl5ook2lk" path="res://Scripts/game_controller.gd" id="1_wowpa"]
 [ext_resource type="Resource" uid="uid://g1c8qylp24oc" path="res://data/bricks_kind.tres" id="4_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://khpiljcw2c5y" path="res://Assets/kenney_cursor-pixel-pack/Tiles/tile_0013.png" id="5_i6g32"]
-[ext_resource type="Resource" uid="uid://p4df6r7bftsp" path="res://data/props_kind.tres" id="5_v158k"]
 [ext_resource type="PackedScene" uid="uid://dh8nlpd3ccxm8" path="res://Controller/bricks_controller.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://donkwcm6jwiw2" path="res://Objects/數值調整.tscn" id="6_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dqrq3qg5wiyma" path="res://Assets/Q版齊絨正面.png" id="6_i6g32"]
@@ -57,7 +56,6 @@ position = Vector2(379, 769)
 [node name="bricksController" parent="." node_paths=PackedStringArray("create_point") instance=ExtResource("5_wowpa")]
 create_point = NodePath("../CreatePoint")
 brickstable = ExtResource("4_1l0tm")
-propstable = ExtResource("5_v158k")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

@@ -4,7 +4,6 @@ extends Node
 @export var width = 5
 @export var create_point : Marker2D
 @export var brickstable : RandomTable
-@export var propstable : RandomTable
 
 
 var total = 0
@@ -23,12 +22,10 @@ func create():
 			brick.position = create_point_position
 			brick.disappear.connect(check_remain_bricks)
 			
-			# 如果有道具的話
-			if randi_range(0,100) % 2:
-				brick.prop_name = propstable.get_random()
-				brick.has_prop.connect(drop_prop)
+			# 隨機生成磚塊種類
+			brick.kind_name = brickstable.get_random()
+			brick.has_prop.connect(drop_prop)
 				
-			
 			add_child(brick)
 			total += 1
 			create_point_position.y += 25

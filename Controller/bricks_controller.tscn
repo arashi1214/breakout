@@ -4,4 +4,3 @@
 
 [node name="bricksController" type="Node"]
 script = ExtResource("1_jhse7")
-props_list = ["props_long", "props_short", "props_HP"]
