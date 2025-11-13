@@ -53,8 +53,9 @@ position = Vector2(64, 64)
 [node name="CerateBallPoint" type="Marker2D" parent="."]
 position = Vector2(379, 769)
 
-[node name="bricksController" parent="." node_paths=PackedStringArray("create_point") instance=ExtResource("5_wowpa")]
+[node name="bricksController" parent="." node_paths=PackedStringArray("create_point", "GameController") instance=ExtResource("5_wowpa")]
 create_point = NodePath("../CreatePoint")
+GameController = NodePath("..")
 brickstable = ExtResource("4_1l0tm")
 
 [node name="UI" type="Control" parent="."]

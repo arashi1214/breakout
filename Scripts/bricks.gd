@@ -19,6 +19,7 @@ func _ready() -> void:
 			pass
 		_:
 			buff_name = kind_name
+			update_color()
 
 func on_collision():
 	HP -= 1
@@ -29,3 +30,12 @@ func on_collision():
 		if buff_name:
 			emit_signal("triger_buff", buff_name)
 		call_deferred("queue_free")
+
+func update_color():
+	match buff_name:
+		"Medicine":
+			$Polygon2D.color = "Green"
+		"Poison":
+			$Polygon2D.color = "Red"
+		"Blood return":
+			$Polygon2D.color = "Purple"

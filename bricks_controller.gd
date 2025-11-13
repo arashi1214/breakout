@@ -3,8 +3,8 @@ extends Node
 @export var hight = 12
 @export var width = 5
 @export var create_point : Marker2D
+@export var GameController : Node
 @export var brickstable : RandomTable
-
 
 var total = 0
 signal GameClear()
@@ -25,6 +25,7 @@ func create():
 			# 隨機生成磚塊種類
 			brick.kind_name = brickstable.get_random()
 			brick.has_prop.connect(drop_prop)
+			brick.triger_buff.connect(GameController.use_buff_to_player)
 				
 			add_child(brick)
 			total += 1
@@ -37,6 +38,7 @@ func drop_prop(prop_name, prop_pos):
 	var new_prop = prop.instantiate()
 	new_prop.position = prop_pos
 	add_child(new_prop)
+
 
 func check_remain_bricks():
 	total -= 1

@@ -38,13 +38,25 @@ func use_HP_prop():
 		newHP.position.y = 30
 		$"UI/HP".add_child(newHP)
 
-func out_of_bounds():
+func use_buff_to_player(buff):
+	match buff:
+		"Medicine":
+			use_HP_prop()
+		"Poison":
+			deduct_HP()
+		"Blood return":
+			pass
+
+func deduct_HP():
 	HP -= 1
 	$"UI/HP".get_child(HP).queue_free()
+	if HP <= 0:
+		$UI/NewGame.visible = true
+
+func out_of_bounds():
+	deduct_HP()
 	if HP > 0:
 		create_ball()
-	else:
-		$UI/NewGame.visible = true
 		
 func update_score():
 	score += 1
