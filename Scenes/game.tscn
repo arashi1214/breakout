@@ -65,7 +65,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="UI"]
+[node name="Score" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 601.0
 offset_top = 3.0
@@ -111,6 +111,18 @@ offset_top = 34.0
 offset_right = 214.0
 offset_bottom = 57.0
 text = "100"
+
+[node name="Tips" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 365.0
+offset_right = 492.0
+offset_bottom = 502.0
+text = "Tips
+按 Space 以開始遊戲
+紅色磚塊會扣血
+綠色磚塊會回血
+打完全部一般磚塊即可進入下一關"
 
 [node name="數值調整" parent="." node_paths=PackedStringArray("player", "GameController") instance=ExtResource("6_1l0tm")]
 visible = false
