@@ -115,7 +115,7 @@ func reset_game():
 	# 分數歸零
 	if level == 1:
 		score = 0
-		$UI/Label.text = str(score)
+		$UI/Score.text = str(score)
 	elif level <= maxlevel:
 		$bricksController.brickstable = load("res://data/bricks_kind_level" + str(level) + ".tres")
 	else:

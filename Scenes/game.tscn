@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://ditbkl5ook2lk" path="res://Scripts/game_controller.gd" id="1_wowpa"]
 [ext_resource type="Resource" uid="uid://g1c8qylp24oc" path="res://data/bricks_kind_level1.tres" id="4_1l0tm"]
-[ext_resource type="FontFile" uid="uid://b2csi4luj45w1" path="res://Assets/Font/NotoSansCJKtc-hinted/NotoSansCJKtc-Bold.otf" id="5_i6g32"]
+[ext_resource type="FontFile" uid="uid://cax7hlux215db" path="res://Assets/Font/NotoSansCJKtc-hinted/NotoSansCJKtc-Black.otf" id="5_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://dh8nlpd3ccxm8" path="res://Controller/bricks_controller.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://donkwcm6jwiw2" path="res://Objects/數值調整.tscn" id="6_1l0tm"]
 
@@ -81,7 +81,7 @@ offset_left = 271.0
 offset_top = 477.0
 offset_right = 486.0
 offset_bottom = 524.0
-theme_override_fonts/font = ExtResource("5_i6g32")
+theme_override_fonts/font = ExtResource("5_1l0tm")
 text = "Reset"
 
 [node name="Next" type="Button" parent="UI"]
@@ -91,7 +91,7 @@ offset_left = 271.0
 offset_top = 477.0
 offset_right = 486.0
 offset_bottom = 524.0
-theme_override_fonts/font = ExtResource("5_i6g32")
+theme_override_fonts/font = ExtResource("5_1l0tm")
 text = "Next Level"
 
 [node name="HP" type="Line2D" parent="UI"]
