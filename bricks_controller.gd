@@ -26,12 +26,18 @@ func create():
 			brick.kind_name = brickstable.get_random()
 			brick.has_prop.connect(drop_prop)
 			brick.triger_buff.connect(GameController.use_buff_to_player)
-				
+			
+			# 僅計算一般方塊，打完即可通關
+			if brick.kind_name == "Normal":
+				total += 1
+			
 			add_child(brick)
-			total += 1
+			
 			create_point_position.y += 25
 		create_point_position.y = create_point.position.y
 		create_point_position.x += 48	
+	
+	print(total)
 
 func drop_prop(prop_name, prop_pos):
 	var prop = load("res://Objects/props/" + prop_name + ".tscn")
