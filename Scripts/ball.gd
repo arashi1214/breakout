@@ -41,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 					emit_signal("get_score")
 					collider_object.on_collision()
 					
-					if speed < 250:
+					if speed < 300:
 						speed += 10
 					$AudioStreamPlayer.stream = brick_audio
 					return

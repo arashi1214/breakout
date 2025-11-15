@@ -3,11 +3,12 @@ extends Node
 @export var HP = 3
 @export var MaxHP = 5
 @export var ball_birth_point : Marker2D
+@export var ball_speed = 100
 
 var ball_object
 var HP_icon
 var score = 0
-var ball_speed = 100
+
 
 func _ready() -> void:
 	ball_object = preload("res://Objects/ball.tscn")
@@ -51,7 +52,7 @@ func deduct_HP():
 	HP -= 1
 	$"UI/HP".get_child(HP).queue_free()
 	if HP <= 0:
-		$UI/NewGame.visible = true
+		game_finish()
 
 func out_of_bounds():
 	deduct_HP()
@@ -64,8 +65,14 @@ func update_score():
 	
 func game_finish():
 	# 顯示分數
-	
 	$UI/NewGame.visible = true	
+	
+	# 暫停一切移動
+	$Player.status = false
+	var balls = get_tree().get_nodes_in_group("ball")
+	
+	for ball in balls:
+		ball.status = false
 
 func reset_game():
 	$UI/NewGame.visible = false
@@ -80,6 +87,13 @@ func reset_game():
 	$Player.reset()
 	HP = 3
 	
+	# 清空並重新生成球
+	var balls = get_tree().get_nodes_in_group("ball")
+	
+	for ball in balls:
+		ball.queue_free()
+	
 	create_ball()
+	
 	# 重新生成磚塊
 	$bricksController.reset()

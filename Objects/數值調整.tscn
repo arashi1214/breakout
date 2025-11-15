@@ -18,7 +18,7 @@ offset_top = 485.0
 offset_right = 288.5625
 offset_bottom = 516.0
 max_value = 10.0
-value = 1.0
+value = 8.0
 rounded = true
 
 [node name="BallSpeed" type="SpinBox" parent="."]
@@ -29,7 +29,7 @@ offset_right = 467.5625
 offset_bottom = 519.0
 min_value = 50.0
 max_value = 500.0
-value = 100.0
+value = 200.0
 rounded = true
 
 [node name="Label" type="Label" parent="."]

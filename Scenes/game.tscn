@@ -23,6 +23,7 @@ size = Vector2(836.5, 54.5)
 [node name="Game" type="Node" node_paths=PackedStringArray("ball_birth_point")]
 script = ExtResource("1_wowpa")
 ball_birth_point = NodePath("CerateBallPoint")
+ball_speed = 200
 
 [node name="Wall" type="StaticBody2D" parent="." groups=["rebound"]]
 
@@ -46,6 +47,7 @@ shape = SubResource("RectangleShape2D_wrm1d")
 
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
 position = Vector2(311, 863)
+speed = 8
 
 [node name="CreatePoint" type="Marker2D" parent="."]
 position = Vector2(64, 64)

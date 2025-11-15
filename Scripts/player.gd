@@ -5,6 +5,7 @@ extends CharacterBody2D
 var screen_size
 var start_position
 var start_scale
+var status = false
 
 signal HP_update()
 
@@ -15,15 +16,20 @@ func _ready() -> void:
 	
 	
 func _physics_process(_delta):
-	var velocity = Vector2.ZERO
+	# 開始後平台才可以移動
+	if Input.is_action_pressed("Space") and !status:
+		status = true
 	
-	if Input.is_action_pressed("move_right"):
-		velocity.x += speed
-	elif Input.is_action_pressed("move_left"):
-		velocity.x -= speed
+	if status:
+		var velocity = Vector2.ZERO
 		
-	position += velocity
-	position = position.clamp(Vector2.ZERO, Vector2(screen_size.x - $CollisionShape2D.shape.size.x * scale.x, screen_size.y))
+		if Input.is_action_pressed("move_right"):
+			velocity.x += speed
+		elif Input.is_action_pressed("move_left"):
+			velocity.x -= speed
+			
+		position += velocity
+		position = position.clamp(Vector2.ZERO, Vector2(screen_size.x - $CollisionShape2D.shape.size.x * scale.x, screen_size.y))
 
 func useprop(prop_name):
 	match prop_name:
