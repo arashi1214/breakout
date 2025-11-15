@@ -1,18 +1,19 @@
 extends Node
 
-@export var HP = 3
-@export var MaxHP = 5
+@export var HP = 100
+@export var MaxHP = 100
+@export var bar_width = 200
+@export var bar_height := 20
+
 @export var ball_birth_point : Marker2D
 @export var ball_speed = 100
 
 var ball_object
-var HP_icon
 var score = 0
 
 
 func _ready() -> void:
 	ball_object = preload("res://Objects/ball.tscn")
-	HP_icon = preload("res://Objects/HP_icon.tscn")
 	$Player.HP_update.connect(use_HP_prop)
 	$bricksController.GameClear.connect(game_finish)
 	create_ball()
@@ -31,13 +32,28 @@ func create_ball():
 	add_child(ball)
 
 func use_HP_prop():
-	if HP < 5:
-		HP += 1
-		var newHP = HP_icon.instantiate()
-		newHP.name = str(HP)
-		newHP.position.x = 40 * HP
-		newHP.position.y = 30
-		$"UI/HP".add_child(newHP)
+	set_hp(HP + 10)
+		
+func set_hp(value):
+	HP = clamp(value, 0, MaxHP)
+	update_HP_bar()
+	
+func update_HP_bar():
+	# 計算血條比例
+	var bar = $UI/HP/HP_bar
+	var ratio = HP / float(MaxHP)
+	var current_width = bar_width * ratio
+
+	# 更新血條長度
+	bar.polygon = PackedVector2Array([
+		Vector2(90, 37),
+		Vector2(90 + current_width, 37),
+		Vector2(90 + current_width, 37 + bar_height),
+		Vector2(90, 37 + bar_height)
+	])
+	
+	$UI/HP/HP_number.text = str(HP)
+	
 
 func use_buff_to_player(buff):
 	match buff:
@@ -49,8 +65,7 @@ func use_buff_to_player(buff):
 			pass
 
 func deduct_HP():
-	HP -= 1
-	$"UI/HP".get_child(HP).queue_free()
+	set_hp(HP - 10)
 	if HP <= 0:
 		game_finish()
 
@@ -85,7 +100,7 @@ func reset_game():
 	
 	# 玩家歸位
 	$Player.reset()
-	HP = 3
+	set_hp(100)
 	
 	# 清空並重新生成球
 	var balls = get_tree().get_nodes_in_group("ball")

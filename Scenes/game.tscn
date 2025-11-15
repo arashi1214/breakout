@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhxt3vmqvotkb"]
+[gd_scene load_steps=11 format=3 uid="uid://bhxt3vmqvotkb"]
 
 [ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://ditbkl5ook2lk" path="res://Scripts/game_controller.gd" id="1_wowpa"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://khpiljcw2c5y" path="res://Assets/kenney_cursor-pixel-pack/Tiles/tile_0013.png" id="5_i6g32"]
 [ext_resource type="PackedScene" uid="uid://dh8nlpd3ccxm8" path="res://Controller/bricks_controller.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://donkwcm6jwiw2" path="res://Objects/數值調整.tscn" id="6_1l0tm"]
-[ext_resource type="Texture2D" uid="uid://dqrq3qg5wiyma" path="res://Assets/Q版齊絨正面.png" id="6_i6g32"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
 size = Vector2(63.5, 901)
@@ -85,22 +84,23 @@ offset_bottom = 517.0
 texture_normal = ExtResource("5_i6g32")
 stretch_mode = 0
 
-[node name="HP" type="Node" parent="UI"]
+[node name="HP" type="Line2D" parent="UI"]
+position = Vector2(-72, -19)
+points = PackedVector2Array(89.5, 36.5, 290.5, 36.5, 290.5, 55.5, 89.5, 55.5)
+closed = true
+width = 1.0
+default_color = Color(0, 0, 0, 1)
 
-[node name="1" type="Sprite2D" parent="UI/HP"]
-position = Vector2(40.000004, 30)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("6_i6g32")
+[node name="HP_bar" type="Polygon2D" parent="UI/HP"]
+color = Color(0.8023913, 0.22799441, 0.24960783, 1)
+polygon = PackedVector2Array(90, 37, 290, 37, 290, 55, 90, 55)
 
-[node name="2" type="Sprite2D" parent="UI/HP"]
-position = Vector2(80, 30)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("6_i6g32")
-
-[node name="3" type="Sprite2D" parent="UI/HP"]
-position = Vector2(120, 30)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("6_i6g32")
+[node name="HP_number" type="Label" parent="UI/HP"]
+offset_left = 174.0
+offset_top = 34.0
+offset_right = 214.0
+offset_bottom = 57.0
+text = "100"
 
 [node name="數值調整" parent="." node_paths=PackedStringArray("player", "GameController") instance=ExtResource("6_1l0tm")]
 visible = false
