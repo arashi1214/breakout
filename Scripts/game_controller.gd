@@ -11,6 +11,7 @@ extends Node
 var ball_object
 var score = 0
 var game_status = true
+var level = 1
 
 
 func _ready() -> void:
@@ -76,7 +77,7 @@ func use_buff_to_player(buff):
 func deduct_HP():
 	set_hp(HP - 10)
 	if HP <= 0:
-		game_finish()
+		game_finish("GameOver")
 
 func out_of_bounds():
 	deduct_HP()
@@ -87,21 +88,32 @@ func update_score():
 	score += 1
 	$UI/Label.text = str(score)
 	
-func game_finish():
+func game_finish(level_status : String):
 	# 顯示分數
-	$UI/NewGame.visible = true	
 	
+	
+	# 根據狀態顯示重置還是下一關的按鈕
+	if level_status == "GameOver":
+		$UI/NewGame.visible = true	
+		level = 1
+	elif level_status == "GameClear":
+		$UI/Next.visible = true	
+		level += 1
 	# 暫停一切移動
 	pause()
 
 func reset_game():
 	$UI/NewGame.visible = false
+	$UI/Next.visible = false
 	
 	# 紀錄分數
 	
 	# 分數歸零
-	score = 0
-	$UI/Label.text = str(score)
+	if level == 1:
+		score = 0
+		$UI/Label.text = str(score)
+	else:
+		$bricksController.brickstable = load("res://data/bricks_kind_level" + str(level) + ".tres")
 	
 	# 玩家歸位
 	$Player.reset()

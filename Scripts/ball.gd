@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var player_audio : AudioStreamOggVorbis
 
 var status = false
+var ball_status = false
 var previous_velocity = Vector2.ZERO
 var speed
 
@@ -12,8 +13,9 @@ signal out_of_bounds()
 signal get_score()
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed("Space") and !status:
+	if Input.is_action_pressed("Space") and !ball_status:
 		status = true
+		ball_status = true
 		velocity = Vector2(0, 1).normalized() * speed
 	if status:
 		if velocity.length() != 0.0:
@@ -39,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 						velocity.x = previous_velocity.x * -1
 					
 					if velocity.y == 0:
-						velocity.y += 0.1
+						velocity.y += 0.5
 
 					emit_signal("get_score")
 					collider_object.on_collision()

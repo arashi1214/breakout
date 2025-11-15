@@ -24,7 +24,8 @@ func _ready() -> void:
 func on_collision():
 	HP -= 1
 	if HP <= 0:
-		emit_signal("disappear")
+		if kind_name == "Normal":
+			emit_signal("disappear")
 		if prop_name:
 			emit_signal("has_prop", prop_name, position)
 		if buff_name:

@@ -7,7 +7,7 @@ extends Node
 @export var brickstable : RandomTable
 
 var total = 0
-signal GameClear()
+signal GameClear(level_status)
 
 func _ready() -> void:
 	create()
@@ -49,7 +49,7 @@ func drop_prop(prop_name, prop_pos):
 func check_remain_bricks():
 	total -= 1
 	if total == 0:
-		emit_signal("GameClear")
+		emit_signal("GameClear", "GameClear")
 		print("Game finish")
 
 func reset():
@@ -57,4 +57,6 @@ func reset():
 	for child in all_children:
 		child.queue_free()
 		
+	total = 0
+	
 	create()

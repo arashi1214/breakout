@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://seibums485i6"]
-
-[ext_resource type="Texture2D" uid="uid://dqrq3qg5wiyma" path="res://Assets/Q版齊絨正面.png" id="1_480ss"]
-
-[node name="Node2D" type="Sprite2D"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_480ss")

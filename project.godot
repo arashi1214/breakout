@@ -28,6 +28,10 @@ bricks="磚塊"
 player=""
 ball="balls"
 
+[gui]
+
+theme/custom_font="uid://cax7hlux215db"
+
 [input]
 
 move_right={

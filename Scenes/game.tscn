@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://ditbkl5ook2lk" path="res://Scripts/game_controller.gd" id="1_wowpa"]
-[ext_resource type="Resource" uid="uid://g1c8qylp24oc" path="res://data/bricks_kind.tres" id="4_1l0tm"]
-[ext_resource type="Texture2D" uid="uid://khpiljcw2c5y" path="res://Assets/kenney_cursor-pixel-pack/Tiles/tile_0013.png" id="5_i6g32"]
+[ext_resource type="Resource" uid="uid://g1c8qylp24oc" path="res://data/bricks_kind_level1.tres" id="4_1l0tm"]
+[ext_resource type="FontFile" uid="uid://b2csi4luj45w1" path="res://Assets/Font/NotoSansCJKtc-hinted/NotoSansCJKtc-Bold.otf" id="5_i6g32"]
 [ext_resource type="PackedScene" uid="uid://dh8nlpd3ccxm8" path="res://Controller/bricks_controller.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://donkwcm6jwiw2" path="res://Objects/數值調整.tscn" id="6_1l0tm"]
 
@@ -74,15 +74,25 @@ offset_bottom = 45.0
 theme_override_font_sizes/font_size = 30
 text = "0"
 
-[node name="NewGame" type="TextureButton" parent="UI"]
+[node name="NewGame" type="Button" parent="UI"]
 visible = false
 layout_mode = 0
-offset_left = 345.0
+offset_left = 271.0
 offset_top = 477.0
-offset_right = 385.0
-offset_bottom = 517.0
-texture_normal = ExtResource("5_i6g32")
-stretch_mode = 0
+offset_right = 486.0
+offset_bottom = 524.0
+theme_override_fonts/font = ExtResource("5_i6g32")
+text = "Reset"
+
+[node name="Next" type="Button" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 271.0
+offset_top = 477.0
+offset_right = 486.0
+offset_bottom = 524.0
+theme_override_fonts/font = ExtResource("5_i6g32")
+text = "Next Level"
 
 [node name="HP" type="Line2D" parent="UI"]
 position = Vector2(-72, -19)
@@ -108,3 +118,4 @@ player = NodePath("../Player")
 GameController = NodePath("..")
 
 [connection signal="button_down" from="UI/NewGame" to="." method="reset_game"]
+[connection signal="button_down" from="UI/Next" to="." method="reset_game"]
