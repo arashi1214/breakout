@@ -10,6 +10,7 @@ extends Node
 
 var ball_object
 var score = 0
+var game_status = true
 
 
 func _ready() -> void:
@@ -21,7 +22,16 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		$"數值調整".visible = !$"數值調整".visible
+		pause()
 
+func pause():
+	$Player.status = !game_status
+	var balls = get_tree().get_nodes_in_group("ball")
+	
+	for ball in balls:
+		ball.status = !game_status
+	
+	game_status = !game_status
 
 func create_ball():
 	var ball = ball_object.instantiate()
@@ -54,7 +64,6 @@ func update_HP_bar():
 	
 	$UI/HP/HP_number.text = str(HP)
 	
-
 func use_buff_to_player(buff):
 	match buff:
 		"Medicine":
@@ -83,11 +92,7 @@ func game_finish():
 	$UI/NewGame.visible = true	
 	
 	# 暫停一切移動
-	$Player.status = false
-	var balls = get_tree().get_nodes_in_group("ball")
-	
-	for ball in balls:
-		ball.status = false
+	pause()
 
 func reset_game():
 	$UI/NewGame.visible = false

@@ -37,6 +37,9 @@ func _physics_process(_delta: float) -> void:
 						velocity.y = previous_velocity.y * -1
 					elif abs(normal.x) > 0.9: # 左右碰撞 (磚塊側面)
 						velocity.x = previous_velocity.x * -1
+					
+					if velocity.y == 0:
+						velocity.y += 0.1
 
 					emit_signal("get_score")
 					collider_object.on_collision()
