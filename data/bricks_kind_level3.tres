@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RandomTable" load_steps=2 format=3 uid="uid://crf70nn0wu0cq"]
+
+[ext_resource type="Script" uid="uid://qtvn36unaeep" path="res://Scripts/random_table.gd" id="1_j31k5"]
+
+[resource]
+script = ExtResource("1_j31k5")
+items = Array[Dictionary]([{
+"name": "Medicine",
+"weight": 3
+}, {
+"name": "Poison",
+"weight": 3
+}, {
+"name": "Normal",
+"weight": 10
+}, {
+"name": "Prop",
+"weight": 1
+}])
+metadata/_custom_type_script = "uid://qtvn36unaeep"

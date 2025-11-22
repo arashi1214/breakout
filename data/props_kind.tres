@@ -10,5 +10,8 @@ items = Array[Dictionary]([{
 }, {
 "name": "props_short",
 "weight": 2
+}, {
+"name": "operation_reversal",
+"weight": "0"
 }])
 metadata/_custom_type_script = "uid://qtvn36unaeep"

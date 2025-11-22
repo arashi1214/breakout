@@ -13,40 +13,59 @@ script = ExtResource("1_5y6v8")
 
 [node name="PlayerSpeed" type="SpinBox" parent="."]
 layout_mode = 0
-offset_left = 202.0
-offset_top = 485.0
-offset_right = 288.5625
-offset_bottom = 516.0
+offset_left = 123.0
+offset_top = 559.0
+offset_right = 209.5625
+offset_bottom = 592.0
 max_value = 10.0
 value = 8.0
 rounded = true
 
 [node name="BallSpeed" type="SpinBox" parent="."]
 layout_mode = 0
-offset_left = 381.0
-offset_top = 488.0
-offset_right = 467.5625
-offset_bottom = 519.0
+offset_left = 302.0
+offset_top = 561.0
+offset_right = 388.5625
+offset_bottom = 594.0
 min_value = 50.0
 max_value = 500.0
 value = 200.0
 rounded = true
 
+[node name="Level" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 561.0
+offset_right = 579.8125
+offset_bottom = 594.0
+min_value = 1.0
+max_value = 5.0
+value = 1.0
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 193.0
-offset_top = 447.0
-offset_right = 292.0
-offset_bottom = 470.0
+offset_left = 114.0
+offset_top = 521.0
+offset_right = 219.0
+offset_bottom = 546.0
 text = "Player speed"
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 381.0
-offset_top = 447.0
-offset_right = 461.0
-offset_bottom = 470.0
+offset_left = 302.0
+offset_top = 521.0
+offset_right = 386.0
+offset_bottom = 546.0
 text = "Ball speed"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 523.0
+offset_right = 538.0
+offset_bottom = 548.0
+text = "Level"
 
 [connection signal="value_changed" from="PlayerSpeed" to="." method="_on_player_speed_value_changed"]
 [connection signal="value_changed" from="BallSpeed" to="." method="_on_ball_speed_value_changed"]
+[connection signal="value_changed" from="Level" to="." method="_on_level_value_changed"]

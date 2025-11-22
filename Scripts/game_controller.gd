@@ -12,7 +12,7 @@ var ball_object
 var score = 0
 var game_status = true
 var level = 1
-var maxlevel = 2
+var maxlevel = 5
 
 
 func _ready() -> void:
@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 		$"數值調整".visible = !$"數值調整".visible
 		pause()
 		
-	if Input.is_action_pressed("Space"):
+	if Input.is_action_pressed("Interactive"):
 		$UI/Tips.visible = false
 
 func pause():
@@ -111,15 +111,13 @@ func reset_game():
 	$UI/Next.visible = false
 	
 	# 紀錄分數
-	
+
 	# 分數歸零
 	if level == 1:
 		score = 0
 		$UI/Score.text = str(score)
-	elif level <= maxlevel:
-		$bricksController.brickstable = load("res://data/bricks_kind_level" + str(level) + ".tres")
-	else:
-		pass
+	
+	$bricksController.brickstable = load("res://data/bricks_kind_level" + str(int(level)) + ".tres")
 	
 	# 玩家歸位
 	$Player.reset()

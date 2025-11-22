@@ -9,13 +9,10 @@ items = Array[Dictionary]([{
 "weight": 2
 }, {
 "name": "Poison",
-"weight": 5
-}, {
-"name": "Blood return",
-"weight": 0
+"weight": 2
 }, {
 "name": "Normal",
-"weight": 8
+"weight": 10
 }, {
 "name": "Prop",
 "weight": 1

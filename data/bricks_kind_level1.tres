@@ -6,16 +6,13 @@
 script = ExtResource("1_vmx0e")
 items = Array[Dictionary]([{
 "name": "Medicine",
-"weight": 5
+"weight": 1
 }, {
 "name": "Poison",
-"weight": 5
-}, {
-"name": "Blood return",
 "weight": 0
 }, {
 "name": "Normal",
-"weight": 8
+"weight": 15
 }, {
 "name": "Prop",
 "weight": 1

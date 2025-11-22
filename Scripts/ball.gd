@@ -13,7 +13,7 @@ signal out_of_bounds()
 signal get_score()
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed("Space") and !ball_status:
+	if Input.is_action_pressed("Interactive") and !ball_status:
 		status = true
 		ball_status = true
 		velocity = Vector2(0, 1).normalized() * speed

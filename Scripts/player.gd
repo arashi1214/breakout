@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 func _physics_process(_delta):
 	# 開始後平台才可以移動
-	if Input.is_action_pressed("Space") and !status:
+	if Input.is_action_pressed("Interactive") and !status:
 		status = true
 	
 	if status:

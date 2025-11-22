@@ -119,7 +119,7 @@ offset_top = 365.0
 offset_right = 492.0
 offset_bottom = 502.0
 text = "Tips
-按 Space 以開始遊戲
+按 E 以開始遊戲
 紅色磚塊會扣血
 綠色磚塊會回血
 打完全部一般磚塊即可進入下一關"
