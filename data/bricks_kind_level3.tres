@@ -6,15 +6,15 @@
 script = ExtResource("1_j31k5")
 items = Array[Dictionary]([{
 "name": "Medicine",
-"weight": 3
+"weight": 5
 }, {
 "name": "Poison",
-"weight": 3
-}, {
-"name": "Normal",
 "weight": 10
 }, {
+"name": "Normal",
+"weight": 42
+}, {
 "name": "Prop",
-"weight": 1
+"weight": 3
 }])
 metadata/_custom_type_script = "uid://qtvn36unaeep"

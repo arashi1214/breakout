@@ -9,12 +9,15 @@ items = Array[Dictionary]([{
 "weight": 2
 }, {
 "name": "Poison",
-"weight": 5
+"weight": 4
 }, {
 "name": "Normal",
-"weight": 8
+"weight": 6
 }, {
 "name": "Prop",
+"weight": 2
+}, {
+"name": "Block",
 "weight": 1
 }])
 metadata/_custom_type_script = "uid://qtvn36unaeep"
