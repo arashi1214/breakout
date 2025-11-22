@@ -16,5 +16,8 @@ items = Array[Dictionary]([{
 }, {
 "name": "Prop",
 "weight": 1
+}, {
+"name": "Block",
+"weight": 1
 }])
 metadata/_custom_type_script = "uid://qtvn36unaeep"

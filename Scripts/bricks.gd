@@ -15,11 +15,12 @@ func _ready() -> void:
 	match kind_name:
 		"Prop":
 			prop_name = propstable.get_random()
-		"Normal":
+		"Normal", "Block":
 			pass
 		_:
 			buff_name = kind_name
-			update_color()
+			
+	update_color()
 
 func on_collision():
 	HP -= 1
@@ -33,10 +34,10 @@ func on_collision():
 		call_deferred("queue_free")
 
 func update_color():
-	match buff_name:
+	match kind_name:
 		"Medicine":
 			$Polygon2D.color = "Green"
 		"Poison":
 			$Polygon2D.color = "Red"
-		"Blood return":
-			$Polygon2D.color = "Purple"
+		"Block":
+			$Polygon2D.color = "Gray"		

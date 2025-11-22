@@ -42,13 +42,17 @@ func _physics_process(_delta: float) -> void:
 					
 					if velocity.y == 0:
 						velocity.y += 0.5
-
-					emit_signal("get_score")
-					collider_object.on_collision()
+					if collider_object.kind_name == "Block":
+						$AudioStreamPlayer.stream = brick_audio
+					else:
+						$AudioStreamPlayer.stream = brick_audio
+						emit_signal("get_score")
+						collider_object.on_collision()
 					
 					if speed < 300:
 						speed += 10
-					$AudioStreamPlayer.stream = brick_audio
+						
+					$AudioStreamPlayer.play()
 					return
 					
 				elif "player" in collider_object.get_groups():

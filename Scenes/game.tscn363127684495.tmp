@@ -1,0 +1,133 @@
+[gd_scene load_steps=11 format=3 uid="uid://bhxt3vmqvotkb"]
+
+[ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://ditbkl5ook2lk" path="res://Scripts/game_controller.gd" id="1_wowpa"]
+[ext_resource type="Resource" uid="uid://g1c8qylp24oc" path="res://data/bricks_kind_level1.tres" id="4_1l0tm"]
+[ext_resource type="FontFile" uid="uid://cax7hlux215db" path="res://Assets/Font/NotoSansCJKtc-hinted/NotoSansCJKtc-Black.otf" id="5_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://dh8nlpd3ccxm8" path="res://Controller/bricks_controller.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://donkwcm6jwiw2" path="res://Objects/數值調整.tscn" id="6_1l0tm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
+size = Vector2(63.5, 901)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebmjs"]
+size = Vector2(834.5, 52.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
+size = Vector2(70, 904.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
+size = Vector2(836.5, 54.5)
+
+[node name="Game" type="Node" node_paths=PackedStringArray("ball_birth_point")]
+script = ExtResource("1_wowpa")
+ball_birth_point = NodePath("CerateBallPoint")
+ball_speed = 200
+
+[node name="Wall" type="StaticBody2D" parent="." groups=["rebound"]]
+
+[node name="Left" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-33.25, 450.5)
+shape = SubResource("RectangleShape2D_2poj3")
+
+[node name="Top" type="CollisionShape2D" parent="Wall"]
+position = Vector2(354.75, -30)
+shape = SubResource("RectangleShape2D_ebmjs")
+
+[node name="Right" type="CollisionShape2D" parent="Wall"]
+position = Vector2(736, 448)
+shape = SubResource("RectangleShape2D_qxrlw")
+
+[node name="界外" type="StaticBody2D" parent="." groups=["Wall"]]
+
+[node name="Bottom" type="CollisionShape2D" parent="界外"]
+position = Vector2(353.75, 927.75)
+shape = SubResource("RectangleShape2D_wrm1d")
+
+[node name="Player" parent="." instance=ExtResource("1_ebmjs")]
+position = Vector2(311, 863)
+speed = 8
+
+[node name="CreatePoint" type="Marker2D" parent="."]
+position = Vector2(64, 64)
+
+[node name="CerateBallPoint" type="Marker2D" parent="."]
+position = Vector2(379, 769)
+
+[node name="bricksController" parent="." node_paths=PackedStringArray("create_point", "GameController") instance=ExtResource("5_wowpa")]
+create_point = NodePath("../CreatePoint")
+GameController = NodePath("..")
+brickstable = ExtResource("4_1l0tm")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 601.0
+offset_top = 3.0
+offset_right = 699.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="NewGame" type="Button" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 271.0
+offset_top = 477.0
+offset_right = 486.0
+offset_bottom = 524.0
+theme_override_fonts/font = ExtResource("5_1l0tm")
+text = "Reset"
+
+[node name="Next" type="Button" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 271.0
+offset_top = 477.0
+offset_right = 486.0
+offset_bottom = 524.0
+theme_override_fonts/font = ExtResource("5_1l0tm")
+text = "Next Level"
+
+[node name="HP" type="Line2D" parent="UI"]
+position = Vector2(-72, -19)
+points = PackedVector2Array(89.5, 36.5, 290.5, 36.5, 290.5, 55.5, 89.5, 55.5)
+closed = true
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="HP_bar" type="Polygon2D" parent="UI/HP"]
+color = Color(0.8023913, 0.22799441, 0.24960783, 1)
+polygon = PackedVector2Array(90, 37, 290, 37, 290, 55, 90, 55)
+
+[node name="HP_number" type="Label" parent="UI/HP"]
+offset_left = 174.0
+offset_top = 34.0
+offset_right = 214.0
+offset_bottom = 57.0
+text = "100"
+
+[node name="Tips" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 365.0
+offset_right = 492.0
+offset_bottom = 502.0
+text = "Tips
+按 E 以開始遊戲
+紅色磚塊會扣血
+綠色磚塊會回血
+打完全部一般磚塊即可進入下一關"
+
+[node name="數值調整" parent="." node_paths=PackedStringArray("player", "GameController") instance=ExtResource("6_1l0tm")]
+visible = false
+player = NodePath("../Player")
+GameController = NodePath("..")
+
+[connection signal="button_down" from="UI/NewGame" to="." method="reset_game"]
+[connection signal="button_down" from="UI/Next" to="." method="reset_game"]

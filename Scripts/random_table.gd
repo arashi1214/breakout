@@ -6,7 +6,6 @@ class_name RandomTable
 	{"name": "A", "weight": 1},
 	{"name": "B", "weight": 2},
 	{"name": "C", "weight": 3},
-	{"name": "D", "weight": 4},
 ]
 
 func get_random() -> String:
@@ -16,6 +15,7 @@ func get_random() -> String:
 
 	var total = 0
 	for item in items:
+		
 		total += item.get("weight", 0)
 
 	if total <= 0:
