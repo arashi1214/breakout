@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var brick_audio : AudioStreamOggVorbis
 @export var player_audio : AudioStreamOggVorbis
+@export var block_audio : AudioStreamOggVorbis
 
 var status = false
 var ball_status = false
@@ -43,7 +44,7 @@ func _physics_process(_delta: float) -> void:
 					if velocity.y == 0:
 						velocity.y += 0.5
 					if collider_object.kind_name == "Block":
-						$AudioStreamPlayer.stream = brick_audio
+						$AudioStreamPlayer.stream = block_audio
 					else:
 						$AudioStreamPlayer.stream = brick_audio
 						emit_signal("get_score")

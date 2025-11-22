@@ -28,7 +28,7 @@ func create():
 			brick.triger_buff.connect(GameController.use_buff_to_player)
 			
 			# 僅計算一般方塊，打完即可通關
-			if brick.kind_name == "Normal":
+			if brick.kind_name == "Normal" or  brick.kind_name == "Prop":
 				total += 1
 			
 			add_child(brick)
