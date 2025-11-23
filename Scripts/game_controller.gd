@@ -10,6 +10,7 @@ extends Node
 
 var ball_object
 var score = 0
+var maxscore = 0
 var game_status = true
 var level = 1
 var maxlevel = 5
@@ -94,24 +95,31 @@ func update_score():
 func game_finish(level_status : String):
 	# 顯示分數
 	
-	
 	# 根據狀態顯示重置還是下一關的按鈕
-	if level_status == "GameOver":
-		$UI/NewGame.visible = true	
-		level = 1
-	elif level_status == "GameClear":
+	if level_status == "GameClear" and level < maxlevel:
 		$UI/Next.visible = true	
 		level += 1
 	# 暫停一切移動
+	else:
+		$UI/NewGame.visible = true	
+		
+		# 更新最高分
+		if score > maxscore:
+			maxscore = score
+		
+		$UI/Highscore.text = "最高分數：" + str(maxscore)
+		$UI/Highscore.visible = true
+		
+		# 重製關卡
+		level = 1
 	pause()
 
 func reset_game():
 	$UI/NewGame.visible = false
 	$UI/Next.visible = false
+	$UI/Highscore.visible = false
 	
-	# 紀錄分數
-
-	# 分數歸零
+	# 將分數歸零
 	if level == 1:
 		score = 0
 		$UI/Score.text = str(score)

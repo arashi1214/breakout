@@ -65,6 +65,24 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="HP" type="Line2D" parent="UI"]
+position = Vector2(-72, -19)
+points = PackedVector2Array(89.5, 36.5, 290.5, 36.5, 290.5, 55.5, 89.5, 55.5)
+closed = true
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="HP_bar" type="Polygon2D" parent="UI/HP"]
+color = Color(0.8023913, 0.22799441, 0.24960783, 1)
+polygon = PackedVector2Array(90, 37, 290, 37, 290, 55, 90, 55)
+
+[node name="HP_number" type="Label" parent="UI/HP"]
+offset_left = 174.0
+offset_top = 34.0
+offset_right = 214.0
+offset_bottom = 57.0
+text = "100"
+
 [node name="Score" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 601.0
@@ -73,6 +91,17 @@ offset_right = 699.0
 offset_bottom = 45.0
 theme_override_font_sizes/font_size = 30
 text = "0"
+
+[node name="Highscore" type="Label" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 295.0
+offset_top = 409.0
+offset_right = 463.0
+offset_bottom = 454.0
+theme_override_fonts/font = ExtResource("5_1l0tm")
+theme_override_font_sizes/font_size = 30
+text = "最高分數：0"
 
 [node name="NewGame" type="Button" parent="UI"]
 visible = false
@@ -93,24 +122,6 @@ offset_right = 486.0
 offset_bottom = 524.0
 theme_override_fonts/font = ExtResource("5_1l0tm")
 text = "Next Level"
-
-[node name="HP" type="Line2D" parent="UI"]
-position = Vector2(-72, -19)
-points = PackedVector2Array(89.5, 36.5, 290.5, 36.5, 290.5, 55.5, 89.5, 55.5)
-closed = true
-width = 1.0
-default_color = Color(0, 0, 0, 1)
-
-[node name="HP_bar" type="Polygon2D" parent="UI/HP"]
-color = Color(0.8023913, 0.22799441, 0.24960783, 1)
-polygon = PackedVector2Array(90, 37, 290, 37, 290, 55, 90, 55)
-
-[node name="HP_number" type="Label" parent="UI/HP"]
-offset_left = 174.0
-offset_top = 34.0
-offset_right = 214.0
-offset_bottom = 57.0
-text = "100"
 
 [node name="Tips" type="Label" parent="UI"]
 layout_mode = 0
