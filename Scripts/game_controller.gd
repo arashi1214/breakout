@@ -17,7 +17,6 @@ var maxlevel = 5
 
 func _ready() -> void:
 	ball_object = preload("res://Objects/ball.tscn")
-	$Player.HP_update.connect(use_HP_prop)
 	$bricksController.GameClear.connect(game_finish)
 	create_ball()
 
