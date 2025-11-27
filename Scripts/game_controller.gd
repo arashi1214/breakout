@@ -112,6 +112,7 @@ func game_finish(level_status : String):
 		
 		# 重製關卡
 		level = 1
+	print("level", level)
 	pause()
 
 func reset_game():

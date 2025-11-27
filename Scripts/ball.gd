@@ -42,6 +42,7 @@ func _physics_process(_delta: float) -> void:
 						velocity.x = previous_velocity.x * -1
 					
 					if velocity.y == 0:
+						print("水平")
 						velocity.y += 0.5
 					if collider_object.kind_name == "Block":
 						$AudioStreamPlayer.stream = block_audio

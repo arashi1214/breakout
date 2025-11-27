@@ -22,7 +22,7 @@ size = Vector2(836.5, 54.5)
 [node name="Game" type="Node" node_paths=PackedStringArray("ball_birth_point")]
 script = ExtResource("1_wowpa")
 ball_birth_point = NodePath("CerateBallPoint")
-ball_speed = 200
+ball_speed = 400
 
 [node name="Wall" type="StaticBody2D" parent="." groups=["rebound"]]
 
