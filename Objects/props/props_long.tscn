@@ -7,6 +7,7 @@
 size = Vector2(28, 27)
 
 [node name="Prop_long" type="Area2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_b2und")
 
 [node name="TextureRect" type="TextureRect" parent="."]

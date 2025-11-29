@@ -10,6 +10,8 @@ var ball_status = false
 var previous_velocity = Vector2.ZERO
 var speed
 
+const MIN_VERTICAL_SPEED_RATIO = 0.3
+
 signal out_of_bounds()
 signal get_score()
 
@@ -18,9 +20,9 @@ func _physics_process(_delta: float) -> void:
 		status = true
 		ball_status = true
 		velocity = Vector2(0, 1).normalized() * speed
-	if status:
-		if velocity.length() != 0.0:
-			velocity = velocity.normalized() * speed
+	if status:	
+		# 避免水平移動
+		enforce_minimum_vertical_velocity()
 		
 		# 移動並確認碰撞
 		previous_velocity = velocity
@@ -51,10 +53,14 @@ func _physics_process(_delta: float) -> void:
 						emit_signal("get_score")
 						collider_object.on_collision()
 					
-					if speed < 300:
-						speed += 10
+					if speed < 600:
+						speed += 20
 						
 					$AudioStreamPlayer.play()
+					
+					if velocity.length() != 0.0:
+						velocity = velocity.normalized() * speed
+						enforce_minimum_vertical_velocity()
 					return
 					
 				elif "player" in collider_object.get_groups():
@@ -75,6 +81,32 @@ func _physics_process(_delta: float) -> void:
 					return
 			
 				$AudioStreamPlayer.play()
+
+		if velocity.length() != 0.0:
+			velocity = velocity.normalized() * speed
+			enforce_minimum_vertical_velocity()
+
+# 強制確保最小垂直速度，防止純水平移動
+func enforce_minimum_vertical_velocity() -> void:
+	var current_speed = velocity.length()
+	if current_speed == 0:
+		return
+	
+	var min_y_speed = current_speed * MIN_VERTICAL_SPEED_RATIO
+	
+	# 如果垂直速度太小，重新調整速度向量
+	if abs(velocity.y) < min_y_speed:
+		# 保持原來的水平方向
+		var x_sign = sign(velocity.x) if velocity.x != 0 else 1
+		# 保持或恢復垂直方向（優先向上）
+		var y_sign = sign(velocity.y) if velocity.y != 0 else -1
+		
+		# 計算新的速度分量
+		var new_y = min_y_speed * y_sign
+		var new_x = sqrt(current_speed * current_speed - new_y * new_y) * x_sign
+		
+		velocity = Vector2(new_x, new_y)
+
 
 # 計算偏移量
 func offset_distance(collision_point, collider_object):

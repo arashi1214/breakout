@@ -6,11 +6,16 @@ extends Node
 @export var GameController : Node
 @export var brickstable : RandomTable
 
-var total = 0
+var game_status = false
+
 signal GameClear(level_status)
 
 func _ready() -> void:
 	create()
+
+func _process(_delta: float) -> void:
+	if game_status:
+		check_remain_bricks()
 
 func create():
 	var bricks = preload("res://Objects/bricks.tscn")
@@ -20,7 +25,6 @@ func create():
 		for w in range(width):
 			var brick = bricks.instantiate()
 			brick.position = create_point_position
-			brick.disappear.connect(check_remain_bricks)
 			
 			# 隨機生成磚塊種類
 			brick.kind_name = brickstable.get_random()
@@ -29,15 +33,16 @@ func create():
 			
 			# 僅計算一般方塊，打完即可通關
 			if brick.kind_name == "Normal" or  brick.kind_name == "Prop":
-				total += 1
+				brick.add_to_group("Normal_bricks")
 			
 			add_child(brick)
 			
 			create_point_position.y += 25
 		create_point_position.y = create_point.position.y
 		create_point_position.x += 48	
+		
+	game_status = true
 	
-	print(total)
 
 func drop_prop(prop_name, prop_pos):
 	var prop = load("res://Objects/props/" + prop_name + ".tscn")
@@ -47,16 +52,17 @@ func drop_prop(prop_name, prop_pos):
 
 
 func check_remain_bricks():
-	total -= 1
-	if total == 0:
+	# 確認剩餘的磚塊數量
+	var destroyed_count = get_tree().get_node_count_in_group("Normal_bricks")
+
+	if destroyed_count <= 0:
 		emit_signal("GameClear", "GameClear")
+		game_status = false
 		print("Game finish")
 
 func reset():
 	var all_children = get_children()
 	for child in all_children:
 		child.queue_free()
-		
-	total = 0
 	
 	create()

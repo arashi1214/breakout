@@ -27,9 +27,9 @@ offset_left = 302.0
 offset_top = 561.0
 offset_right = 388.5625
 offset_bottom = 594.0
-min_value = 50.0
-max_value = 500.0
-value = 200.0
+min_value = 200.0
+max_value = 1000.0
+value = 400.0
 rounded = true
 
 [node name="Level" type="SpinBox" parent="."]

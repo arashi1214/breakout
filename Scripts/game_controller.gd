@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		$"數值調整".visible = !$"數值調整".visible
+		#$"數值調整".visible = !$"數值調整".visible
 		pause()
 		
 	if Input.is_action_pressed("Interactive"):
