@@ -51,24 +51,12 @@ func use_HP_prop():
 		
 func set_hp(value):
 	HP = clamp(value, 0, MaxHP)
-	update_HP_bar()
 	
-func update_HP_bar():
-	# 計算血條比例
-	var bar = $UI/HP/HP_bar
+	var HP_bar = $UI/HP
 	var ratio = HP / float(MaxHP)
-	var current_width = bar_width * ratio
+	var current_width = 80 * ratio
+	HP_bar.value = current_width
 
-	# 更新血條長度
-	bar.polygon = PackedVector2Array([
-		Vector2(90, 37),
-		Vector2(90 + current_width, 37),
-		Vector2(90 + current_width, 37 + bar_height),
-		Vector2(90, 37 + bar_height)
-	])
-	
-	$UI/HP/HP_number.text = str(HP)
-	
 func use_buff_to_player(buff):
 	match buff:
 		"Medicine":

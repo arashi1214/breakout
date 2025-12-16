@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cf8avatlc3i1c"]
+
+[sub_resource type="Curve" id="Curve_q2qc1"]
+
+[sub_resource type="Curve" id="Curve_827ps"]
+_data = [Vector2(0.5509259, 0.8089888), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_se6cy"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_eoscx"]
+curve_x = SubResource("Curve_q2qc1")
+curve_y = SubResource("Curve_827ps")
+curve_z = SubResource("Curve_se6cy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yrdsg"]
+texture = SubResource("CurveXYZTexture_eoscx")
+
+[resource]
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_yrdsg")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dh8nlpd3ccxm8"]
 
-[ext_resource type="Script" uid="uid://bew50y6q5uwon" path="res://bricks_controller.gd" id="1_jhse7"]
+[ext_resource type="Script" uid="uid://bew50y6q5uwon" path="res://Scripts/bricks_controller.gd" id="1_jhse7"]
 
 [node name="bricksController" type="Node"]
 script = ExtResource("1_jhse7")
