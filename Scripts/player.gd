@@ -7,6 +7,7 @@ var start_position
 var start_scale
 var status = false
 var reversal_status = false
+var finger_move_to = "release"
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -21,21 +22,37 @@ func _physics_process(_delta):
 	
 	if status:
 		var velocity = Vector2.ZERO
-		
+
 		if !reversal_status:
-			if Input.is_action_pressed("move_right"):
+			if Input.is_action_pressed("move_right") or finger_move_to == "right":
 				velocity.x += speed
-			elif Input.is_action_pressed("move_left"):
+			elif Input.is_action_pressed("move_left") or finger_move_to == "left":
 				velocity.x -= speed
 		else:
-			if Input.is_action_pressed("move_right"):
+			if Input.is_action_pressed("move_right") or finger_move_to == "right":
 				velocity.x -= speed
-			elif Input.is_action_pressed("move_left"):
+			elif Input.is_action_pressed("move_left") or finger_move_to == "left":
 				velocity.x += speed
 			
 		position += velocity
 		position = position.clamp(Vector2.ZERO, Vector2(screen_size.x - $CollisionShape2D.shape.size.x * scale.x, screen_size.y))
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			if event.position.x > screen_size.x/2:
+				finger_move_to = "right"
+			if event.position.x < screen_size.x/2:
+				finger_move_to = "left"
+		else:
+			finger_move_to = "release"
+			
+	if event is InputEventScreenDrag:	
+		if event.position.x > screen_size.x/2:
+			finger_move_to = "right"
+		if event.position.x < screen_size.x/2:
+			finger_move_to = "left"
+				
 func useprop(prop_name):
 	match prop_name:
 		"Prop_long":

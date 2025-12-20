@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1iyi2bhsfpba"]
+
+[ext_resource type="Script" uid="uid://14ifxa523ybh" path="res://Scripts/player.gd" id="1_3y5cq"]
+[ext_resource type="Texture2D" uid="uid://clskfjq17kacj" path="res://Assets/方塊.png" id="1_y0qk3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0qk3"]
+size = Vector2(182.72516, 40)
+
+[node name="Player" type="CharacterBody2D" groups=["player", "rebound"]]
+scale = Vector2(0.7652265, 0.5)
+script = ExtResource("1_3y5cq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 183.0
+offset_bottom = 40.0
+texture = ExtResource("1_y0qk3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(91.58979, 20)
+shape = SubResource("RectangleShape2D_y0qk3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
