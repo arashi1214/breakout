@@ -14,7 +14,8 @@ var maxscore = 0
 var game_status = true
 var level = 1
 var maxlevel = 5
-
+var ball_instantiate
+var status = false
 
 func _ready() -> void:
 	ball_object = preload("res://Objects/ball.tscn")
@@ -27,15 +28,27 @@ func _process(_delta: float) -> void:
 		pause()
 		
 	if Input.is_action_pressed("Interactive"):
-		$UI/Tips.visible = false
+		game_start()
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			game_start()
+
+
+func game_start():
+	if !status:
+		$UI/Tips.visible = false
+		$Player.status = true
+		status = true
+	if ball_instantiate:
+		ball_instantiate.play()
+		
 func pause():
 	$Player.status = !game_status
-	var balls = get_tree().get_nodes_in_group("ball")
+	var ball = get_tree().get_first_node_in_group("ball")
 	
-	for ball in balls:
-		ball.status = !game_status
-	
+	ball.status = !game_status
 	game_status = !game_status
 
 func create_ball():
@@ -44,7 +57,9 @@ func create_ball():
 	ball.out_of_bounds.connect(out_of_bounds)
 	ball.get_score.connect(update_score)
 	ball.speed = ball_speed
+	
 	add_child(ball)
+	ball_instantiate = ball
 
 func use_HP_prop():
 	set_hp(HP + 10)
@@ -75,6 +90,8 @@ func out_of_bounds():
 	deduct_HP()
 	if HP > 0:
 		create_ball()
+		$Player.position = $Player.start_position
+		
 		
 func update_score():
 	score += 1
@@ -129,3 +146,5 @@ func reset_game():
 	
 	# 重新生成磚塊
 	$bricksController.reset()
+	
+	status = false

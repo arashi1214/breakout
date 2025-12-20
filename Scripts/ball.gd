@@ -16,10 +16,6 @@ signal out_of_bounds()
 signal get_score()
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed("Interactive") and !ball_status:
-		status = true
-		ball_status = true
-		velocity = Vector2(0, 1).normalized() * speed
 	if status:	
 		# 避免水平移動
 		enforce_minimum_vertical_velocity()
@@ -86,6 +82,12 @@ func _physics_process(_delta: float) -> void:
 			velocity = velocity.normalized() * speed
 			enforce_minimum_vertical_velocity()
 
+func play():
+	if !ball_status:
+		status = true
+		ball_status = true
+		velocity = Vector2(0, 1).normalized() * speed
+			
 # 強制確保最小垂直速度，防止純水平移動
 func enforce_minimum_vertical_velocity() -> void:
 	var current_speed = velocity.length()

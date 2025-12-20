@@ -38,20 +38,27 @@ func _physics_process(_delta):
 		position = position.clamp(Vector2.ZERO, Vector2(screen_size.x - $CollisionShape2D.shape.size.x * scale.x, screen_size.y))
 
 func _input(event: InputEvent) -> void:
+	var player_w = $CollisionShape2D.shape.size.x/2
+	
 	if event is InputEventScreenTouch:
 		if event.pressed:
-			if event.position.x > screen_size.x/2:
+			if event.position.x > position.x + player_w:
 				finger_move_to = "right"
-			if event.position.x < screen_size.x/2:
+			elif event.position.x < position.x + player_w:
 				finger_move_to = "left"
+			else:
+				finger_move_to = "release"
+		
 		else:
 			finger_move_to = "release"
 			
 	if event is InputEventScreenDrag:	
-		if event.position.x > screen_size.x/2:
+		if event.position.x > position.x + player_w:
 			finger_move_to = "right"
-		if event.position.x < screen_size.x/2:
+		elif event.position.x < position.x + player_w:
 			finger_move_to = "left"
+		else:
+			finger_move_to = "release"
 				
 func useprop(prop_name):
 	match prop_name:
