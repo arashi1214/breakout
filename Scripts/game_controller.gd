@@ -104,6 +104,7 @@ func game_finish(level_status : String):
 	if level_status == "GameClear" and level < maxlevel:
 		$UI/Next.visible = true	
 		level += 1
+		ball_instantiate.queue_free()
 	# 暫停一切移動
 	else:
 		$UI/NewGame.visible = true	
@@ -136,11 +137,11 @@ func reset_game():
 	$Player.reset()
 	set_hp(100)
 	
-	# 清空並重新生成球
-	var balls = get_tree().get_nodes_in_group("ball")
-	
-	for ball in balls:
-		ball.queue_free()
+	# 重新生成球
+	#var balls = get_tree().get_nodes_in_group("ball")
+	#
+	#for ball in balls:
+		#ball.queue_free()
 	
 	create_ball()
 	

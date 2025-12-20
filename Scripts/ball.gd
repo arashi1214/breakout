@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var block_audio : AudioStreamOggVorbis
 
 var status = false
-var ball_status = false
+var ball_status = false #初始狀態
 var previous_velocity = Vector2.ZERO
 var speed
 
