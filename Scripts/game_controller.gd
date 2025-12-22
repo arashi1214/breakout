@@ -140,13 +140,7 @@ func reset_game():
 	$Player.reset()
 	$Player.change_face("default", -1)
 	set_hp(100)
-	
-	# 重新生成球
-	#var balls = get_tree().get_nodes_in_group("ball")
-	#
-	#for ball in balls:
-		#ball.queue_free()
-	
+
 	create_ball()
 	
 	# 重新生成磚塊

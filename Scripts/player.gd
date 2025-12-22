@@ -79,9 +79,10 @@ func useprop(prop_name):
 				bamboo_image.scale.x -= 0.2
 				bamboo_collision.scale.x -= 0.2
 		"Prop_operation_reversal":
+			change_face("reversal", 5)
 			reversal_status = true
 			$Timer.start()
-			change_face("reversal", 5)
+			
 		_:
 			pass
 
@@ -89,7 +90,8 @@ func change_face(which_face:String, time:int):
 	var face = $player_face
 	var face_Timer = $face_timer
 	
-	face.animation = which_face
+	if !reversal_status or time == -1:
+		face.animation = which_face
 	
 	if time != -1:
 		face_Timer.wait_time = time
