@@ -138,6 +138,7 @@ func reset_game():
 	
 	# 玩家歸位
 	$Player.reset()
+	$Player.change_face("default", -1)
 	set_hp(100)
 	
 	# 重新生成球

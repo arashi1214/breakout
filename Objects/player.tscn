@@ -62,6 +62,7 @@ script = ExtResource("1_3y5cq")
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 183.0
 offset_bottom = 40.0
+pivot_offset = Vector2(100, 0)
 texture = ExtResource("1_y0qk3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

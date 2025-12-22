@@ -61,13 +61,18 @@ func _input(event: InputEvent) -> void:
 			finger_move_to = "release"
 				
 func useprop(prop_name):
+	var bamboo_image = $TextureRect
+	var bamboo_collision = $CollisionShape2D
+	
 	match prop_name:
 		"Prop_long":
-			if scale.x <= 2:
-				scale.x += 0.2
+			if bamboo_collision.scale.x <= 2:
+				bamboo_image.scale.x += 0.2
+				bamboo_collision.scale.x += 0.2
 		"Prop_short":
-			if scale.x >= 0.2:
-				scale.x -= 0.2
+			if bamboo_collision.scale.x >= 0.2:
+				bamboo_image.scale.x -= 0.2
+				bamboo_collision.scale.x -= 0.2
 		"Prop_operation_reversal":
 			reversal_status = true
 			$Timer.start()
@@ -93,6 +98,7 @@ func face_back_to_default():
 
 func reset():
 	position = start_position
-	scale = start_scale
+	$TextureRect.scale.x = start_scale
+	$CollisionShape2D.scale.x = start_scale
 	status = false
 	reversal_status = false
