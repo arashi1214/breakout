@@ -12,7 +12,7 @@ var finger_move_to = "release"
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	start_position = position
-	start_scale = scale
+	start_scale = $TextureRect.scale
 	
 	
 func _physics_process(_delta):
