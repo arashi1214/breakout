@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://ditbkl5ook2lk" path="res://Scripts/game_controller.gd" id="1_wowpa"]
 [ext_resource type="Resource" uid="uid://g1c8qylp24oc" path="res://data/bricks_kind_level1.tres" id="4_1l0tm"]
 [ext_resource type="FontFile" uid="uid://cax7hlux215db" path="res://Assets/Font/NotoSansCJKtc-hinted/NotoSansCJKtc-Black.otf" id="5_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://c2umc67clslip" path="res://Assets/電池.png" id="5_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dh8nlpd3ccxm8" path="res://Controller/bricks_controller.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://donkwcm6jwiw2" path="res://Objects/數值調整.tscn" id="6_1l0tm"]
-[ext_resource type="Texture2D" uid="uid://cdl70qy4slvwu" path="res://Assets/電池.png" id="6_o5yvi"]
-[ext_resource type="Texture2D" uid="uid://p6lna2als0d3" path="res://Assets/閃電.png" id="8_rku1e"]
-[ext_resource type="Texture2D" uid="uid://d3hl687hq0lga" path="res://Assets/電量.png" id="9_rfjv2"]
+[ext_resource type="Texture2D" uid="uid://dtsp83dcb4gji" path="res://Assets/閃電.png" id="6_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://db5amk506rdw0" path="res://Assets/電量.png" id="7_o5yvi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
 size = Vector2(63.5, 901)
@@ -70,12 +70,15 @@ offset_bottom = 40.0
 
 [node name="HP" type="TextureProgressBar" parent="UI"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 202.99998
+offset_bottom = 62.0
 value = 93.0
-texture_under = ExtResource("6_o5yvi")
-texture_over = ExtResource("8_rku1e")
-texture_progress = ExtResource("9_rfjv2")
+nine_patch_stretch = true
+texture_under = ExtResource("5_h4fw4")
+texture_over = ExtResource("6_ldgsr")
+texture_progress = ExtResource("7_o5yvi")
 
 [node name="Score" type="Label" parent="UI"]
 layout_mode = 0

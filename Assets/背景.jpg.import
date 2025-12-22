@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtsp83dcb4gji"
-path="res://.godot/imported/閃電.png-2af2f897ea800e988ccf9e92c0673f31.ctex"
+uid="uid://c553swvkdrvar"
+path="res://.godot/imported/背景.jpg-22f3b0914550214a8ccc3e7d3f40451f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/閃電.png"
-dest_files=["res://.godot/imported/閃電.png-2af2f897ea800e988ccf9e92c0673f31.ctex"]
+source_file="res://Assets/背景.jpg"
+dest_files=["res://.godot/imported/背景.jpg-22f3b0914550214a8ccc3e7d3f40451f.ctex"]
 
 [params]
 
