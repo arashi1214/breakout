@@ -22,17 +22,22 @@ func _physics_process(_delta):
 	
 	if status:
 		var velocity = Vector2.ZERO
-
+		var body = $player_body
 		if !reversal_status:
+			
 			if Input.is_action_pressed("move_right") or finger_move_to == "right":
 				velocity.x += speed
+				body.flip_h = false
 			elif Input.is_action_pressed("move_left") or finger_move_to == "left":
 				velocity.x -= speed
+				body.flip_h = true
 		else:
 			if Input.is_action_pressed("move_right") or finger_move_to == "right":
 				velocity.x -= speed
+				body.flip_h = true
 			elif Input.is_action_pressed("move_left") or finger_move_to == "left":
 				velocity.x += speed
+				body.flip_h = false
 			
 		position += velocity
 		position = position.clamp(Vector2.ZERO, Vector2(screen_size.x - $CollisionShape2D.shape.size.x * scale.x, screen_size.y))
