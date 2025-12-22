@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhxt3vmqvotkb"]
+[gd_scene load_steps=15 format=3 uid="uid://bhxt3vmqvotkb"]
 
 [ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://ditbkl5ook2lk" path="res://Scripts/game_controller.gd" id="1_wowpa"]
+[ext_resource type="Texture2D" uid="uid://c553swvkdrvar" path="res://Assets/背景.jpg" id="2_ldgsr"]
 [ext_resource type="Resource" uid="uid://g1c8qylp24oc" path="res://data/bricks_kind_level1.tres" id="4_1l0tm"]
 [ext_resource type="FontFile" uid="uid://cax7hlux215db" path="res://Assets/Font/NotoSansCJKtc-hinted/NotoSansCJKtc-Black.otf" id="5_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://c2umc67clslip" path="res://Assets/電池.png" id="5_h4fw4"]
@@ -26,6 +27,11 @@ size = Vector2(836.5, 54.5)
 script = ExtResource("1_wowpa")
 ball_birth_point = NodePath("CerateBallPoint")
 ball_speed = 400
+
+[node name="背景" type="Sprite2D" parent="."]
+position = Vector2(348.99997, 449.00003)
+scale = Vector2(0.337, 0.337)
+texture = ExtResource("2_ldgsr")
 
 [node name="Wall" type="StaticBody2D" parent="." groups=["rebound"]]
 
