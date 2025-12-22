@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hmmrdv0pe2qc"
-path="res://.godot/imported/2.png-7d78289e73224f2df8ffe59c9519a7b5.ctex"
+uid="uid://cdl70qy4slvwu"
+path="res://.godot/imported/電池.png-ca3c994944e7460b0a60127ceacb58cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2.png"
-dest_files=["res://.godot/imported/2.png-7d78289e73224f2df8ffe59c9519a7b5.ctex"]
+source_file="res://Assets/電池.png"
+dest_files=["res://.godot/imported/電池.png-ca3c994944e7460b0a60127ceacb58cd.ctex"]
 
 [params]
 

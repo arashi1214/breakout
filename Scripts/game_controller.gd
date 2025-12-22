@@ -69,7 +69,7 @@ func set_hp(value):
 	
 	var HP_bar = $UI/HP
 	var ratio = HP / float(MaxHP)
-	var current_width = 80 * ratio
+	var current_width = 3 + ratio * 90
 	HP_bar.value = current_width
 
 func use_buff_to_player(buff):

@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://c1iyi2bhsfpba"]
 
 [ext_resource type="Script" uid="uid://14ifxa523ybh" path="res://Scripts/player.gd" id="1_3y5cq"]
-[ext_resource type="Texture2D" uid="uid://clskfjq17kacj" path="res://Assets/方塊.png" id="1_y0qk3"]
 [ext_resource type="Texture2D" uid="uid://bdylq85hf3a7m" path="res://Assets/齊絨/迷你絨身體.png" id="3_2i4gt"]
+[ext_resource type="Texture2D" uid="uid://c0pn3r1edhvtd" path="res://Assets/竿.jpg" id="3_f7am4"]
 [ext_resource type="Texture2D" uid="uid://cu1ep5tbjvffe" path="res://Assets/齊絨/表情000.png" id="4_0ad8t"]
 [ext_resource type="Texture2D" uid="uid://b6c0snaidmfhx" path="res://Assets/齊絨/表情TAT.png" id="4_ng3n2"]
 [ext_resource type="Texture2D" uid="uid://1xl1iehjpckk" path="res://Assets/齊絨/表情444.png" id="5_0ar0x"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dbaufiotrn8eq" path="res://Assets/齊絨/表情777.png" id="7_f7am4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0qk3"]
-size = Vector2(182.72516, 40)
+size = Vector2(148.9755, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3y5cq"]
 animations = [{
@@ -59,14 +59,13 @@ animations = [{
 scale = Vector2(0.7652265, 0.5)
 script = ExtResource("1_3y5cq")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 183.0
-offset_bottom = 40.0
-pivot_offset = Vector2(100, 0)
-texture = ExtResource("1_y0qk3")
+[node name="TextureRect" type="Sprite2D" parent="."]
+position = Vector2(94.08979, 36)
+scale = Vector2(0.5, 1)
+texture = ExtResource("3_f7am4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(91.58979, 20)
+position = Vector2(94.0898, 36)
 shape = SubResource("RectangleShape2D_y0qk3")
 
 [node name="Timer" type="Timer" parent="."]
