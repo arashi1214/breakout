@@ -71,11 +71,25 @@ func useprop(prop_name):
 		"Prop_operation_reversal":
 			reversal_status = true
 			$Timer.start()
+			change_face("reversal", 5)
 		_:
 			pass
 
+func change_face(which_face:String, time:int):
+	var face = $player_face
+	var face_Timer = $face_timer
+	
+	face.animation = which_face
+	
+	if time != -1:
+		face_Timer.wait_time = time
+		face_Timer.start()
+
 func _on_timer_timeout() -> void:
 	reversal_status = false
+	
+func face_back_to_default():
+	change_face("default", -1)
 
 func reset():
 	position = start_position

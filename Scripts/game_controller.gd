@@ -85,12 +85,15 @@ func deduct_HP():
 	set_hp(HP - 10)
 	if HP <= 0:
 		game_finish("GameOver")
+		$Player.change_face("game over", 20)
+		
 
 func out_of_bounds():
 	deduct_HP()
 	if HP > 0:
 		create_ball()
 		$Player.position = $Player.start_position
+		$Player.change_face("Injured", 1)
 		
 		
 func update_score():

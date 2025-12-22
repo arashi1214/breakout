@@ -80,6 +80,8 @@ texture = ExtResource("3_2i4gt")
 position = Vector2(91.20593, 163.98874)
 scale = Vector2(0.7645535, 1.1249062)
 sprite_frames = SubResource("SpriteFrames_3y5cq")
-animation = &"Injured"
+
+[node name="face_timer" type="Timer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="face_timer" to="." method="face_back_to_default"]
