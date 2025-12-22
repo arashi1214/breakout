@@ -103,7 +103,7 @@ func face_back_to_default():
 
 func reset():
 	position = start_position
-	$TextureRect.scale.x = start_scale
-	$CollisionShape2D.scale.x = start_scale
+	$TextureRect.scale.x = start_scale.x
+	$CollisionShape2D.scale.x = start_scale.x
 	status = false
 	reversal_status = false
