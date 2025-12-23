@@ -1,21 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://broup6noa3ubf"]
 
 [ext_resource type="Script" uid="uid://c81wkidkhb61t" path="res://Scripts/props.gd" id="1_d7j71"]
-[ext_resource type="Texture2D" uid="uid://c0u3oqkbgeyh0" path="res://Assets/operation_reversal.png" id="2_os6m8"]
+[ext_resource type="Texture2D" uid="uid://c16nclpq102hj" path="res://Assets/反轉.png" id="2_d7j71"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cae2k"]
-size = Vector2(28, 26)
+[sub_resource type="CircleShape2D" id="CircleShape2D_d7j71"]
+radius = 17.0
 
 [node name="Prop_operation_reversal" type="Area2D"]
-scale = Vector2(2, 2)
 script = ExtResource("1_d7j71")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 36.0
 offset_bottom = 36.0
-texture = ExtResource("2_os6m8")
+texture = ExtResource("2_d7j71")
 expand_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(18, 18)
-shape = SubResource("RectangleShape2D_cae2k")
+shape = SubResource("CircleShape2D_d7j71")

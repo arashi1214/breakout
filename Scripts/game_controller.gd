@@ -27,8 +27,8 @@ func _process(_delta: float) -> void:
 		#$"數值調整".visible = !$"數值調整".visible
 		pause()
 		
-	if Input.is_action_pressed("Interactive"):
-		game_start()
+	#if Input.is_action_pressed("Interactive"):
+		#game_start()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
@@ -39,6 +39,7 @@ func _input(event: InputEvent) -> void:
 func game_start():
 	if !status:
 		$UI/Tips.visible = false
+		$UI/Start.visible = false
 		$Player.status = true
 		status = true
 	if ball_instantiate:
@@ -133,6 +134,7 @@ func reset_game():
 	if level == 1:
 		score = 0
 		$UI/Score.text = str(score)
+		$UI/Start.visible = true
 	
 	$bricksController.brickstable = load("res://data/bricks_kind_level" + str(int(level)) + ".tres")
 	

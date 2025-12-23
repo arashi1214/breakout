@@ -78,8 +78,8 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_left = 5.0
 offset_top = 7.0
-offset_right = 202.99998
-offset_bottom = 62.0
+offset_right = 206.59999
+offset_bottom = 63.0
 value = 93.0
 nine_patch_stretch = true
 texture_under = ExtResource("5_h4fw4")
@@ -94,6 +94,16 @@ offset_right = 699.0
 offset_bottom = 45.0
 theme_override_font_sizes/font_size = 30
 text = "0"
+
+[node name="Start" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 473.0
+offset_right = 487.0
+offset_bottom = 526.0
+theme_override_fonts/font = ExtResource("5_1l0tm")
+theme_override_font_sizes/font_size = 16
+text = "Start"
 
 [node name="Highscore" type="Label" parent="UI"]
 visible = false
@@ -117,7 +127,6 @@ theme_override_fonts/font = ExtResource("5_1l0tm")
 text = "Reset"
 
 [node name="Next" type="Button" parent="UI"]
-visible = false
 layout_mode = 0
 offset_left = 271.0
 offset_top = 477.0
@@ -127,13 +136,14 @@ theme_override_fonts/font = ExtResource("5_1l0tm")
 text = "Next Level"
 
 [node name="Tips" type="Label" parent="UI"]
+visible = false
 layout_mode = 0
 offset_left = 252.0
 offset_top = 365.0
 offset_right = 492.0
 offset_bottom = 502.0
 text = "Tips
-按 E 以開始遊戲
+點選畫面可重新發球
 紅色磚塊會扣血
 綠色磚塊會回血
 打完全部一般磚塊即可進入下一關"
@@ -143,5 +153,6 @@ visible = false
 player = NodePath("../Player")
 GameController = NodePath("..")
 
+[connection signal="pressed" from="UI/Start" to="." method="game_start"]
 [connection signal="button_down" from="UI/NewGame" to="." method="reset_game"]
 [connection signal="button_down" from="UI/Next" to="." method="reset_game"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kdiup3ac4260"
-path="res://.godot/imported/3.png-74e0dc2a144c09c09ef2e3d006d05418.ctex"
+uid="uid://cfij2dn47n7a8"
+path="res://.godot/imported/一般磚.png-b9cd68540e2cda42d1fdf747d35f5809.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/3.png"
-dest_files=["res://.godot/imported/3.png-74e0dc2a144c09c09ef2e3d006d05418.ctex"]
+source_file="res://Assets/一般磚.png"
+dest_files=["res://.godot/imported/一般磚.png-b9cd68540e2cda42d1fdf747d35f5809.ctex"]
 
 [params]
 
