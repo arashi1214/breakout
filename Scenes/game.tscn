@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bhxt3vmqvotkb"]
+[gd_scene load_steps=16 format=3 uid="uid://bhxt3vmqvotkb"]
 
 [ext_resource type="PackedScene" uid="uid://c1iyi2bhsfpba" path="res://Objects/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://ditbkl5ook2lk" path="res://Scripts/game_controller.gd" id="1_wowpa"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://donkwcm6jwiw2" path="res://Objects/數值調整.tscn" id="6_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://dtsp83dcb4gji" path="res://Assets/閃電.png" id="6_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://db5amk506rdw0" path="res://Assets/電量.png" id="7_o5yvi"]
+[ext_resource type="StyleBox" uid="uid://vtv2wbwch3rn" path="res://Assets/Theme/buttons.tres" id="10_o5yvi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
 size = Vector2(63.5, 901)
@@ -76,10 +77,10 @@ offset_bottom = 40.0
 
 [node name="HP" type="TextureProgressBar" parent="UI"]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 7.0
-offset_right = 206.59999
-offset_bottom = 63.0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 200.79999
+offset_bottom = 64.0
 value = 93.0
 nine_patch_stretch = true
 texture_under = ExtResource("5_h4fw4")
@@ -97,12 +98,13 @@ text = "0"
 
 [node name="Start" type="Button" parent="UI"]
 layout_mode = 0
-offset_left = 272.0
-offset_top = 473.0
-offset_right = 487.0
-offset_bottom = 526.0
+offset_left = 271.0
+offset_top = 477.0
+offset_right = 486.0
+offset_bottom = 524.0
 theme_override_fonts/font = ExtResource("5_1l0tm")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("10_o5yvi")
 text = "Start"
 
 [node name="Highscore" type="Label" parent="UI"]
@@ -124,15 +126,18 @@ offset_top = 477.0
 offset_right = 486.0
 offset_bottom = 524.0
 theme_override_fonts/font = ExtResource("5_1l0tm")
+theme_override_styles/normal = ExtResource("10_o5yvi")
 text = "Reset"
 
 [node name="Next" type="Button" parent="UI"]
+visible = false
 layout_mode = 0
 offset_left = 271.0
 offset_top = 477.0
 offset_right = 486.0
 offset_bottom = 524.0
 theme_override_fonts/font = ExtResource("5_1l0tm")
+theme_override_styles/normal = ExtResource("10_o5yvi")
 text = "Next Level"
 
 [node name="Tips" type="Label" parent="UI"]

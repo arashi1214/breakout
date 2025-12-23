@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu5l8vq2d2lv8"]
+[gd_scene load_steps=8 format=3 uid="uid://bu5l8vq2d2lv8"]
 
 [ext_resource type="Script" uid="uid://ghultdoffb8n" path="res://Scripts/bricks.gd" id="1_08kef"]
 [ext_resource type="Resource" uid="uid://p4df6r7bftsp" path="res://data/props_kind.tres" id="2_r4k8t"]
+[ext_resource type="Texture2D" uid="uid://cfij2dn47n7a8" path="res://Assets/一般磚.png" id="3_y581s"]
+[ext_resource type="Texture2D" uid="uid://c3vf6u0pneuwi" path="res://Assets/充電磚.png" id="4_iok67"]
+[ext_resource type="Texture2D" uid="uid://s13iv6ok4hvh" path="res://Assets/斷電磚.png" id="5_rbndk"]
+[ext_resource type="Texture2D" uid="uid://bjlkdynbxje3h" path="res://Assets/固定磚.png" id="6_e7dtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhrbj"]
 size = Vector2(47, 25)
@@ -9,17 +13,12 @@ size = Vector2(47, 25)
 [node name="bricks" type="StaticBody2D" groups=["bricks", "rebound"]]
 script = ExtResource("1_08kef")
 propstable = ExtResource("2_r4k8t")
+bricksImage = Array[Texture2D]([ExtResource("3_y581s"), ExtResource("4_iok67"), ExtResource("5_rbndk"), ExtResource("6_e7dtn")])
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(-5, 0)
-color = Color(0.85860765, 0.509843, 0.26476187, 1)
-polygon = PackedVector2Array(5, 0, 5, 25, 52, 25, 52, 0)
-
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(47, 0, 0, 0, 0, 25, 47, 25)
-closed = true
-width = 1.0
-default_color = Color(0, 0, 0, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(23.4, 13)
+scale = Vector2(0.34666666, 0.34666666)
+texture = ExtResource("3_y581s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(23.5, 12.5)
