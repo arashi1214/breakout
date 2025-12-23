@@ -38,7 +38,8 @@ func _physics_process(_delta):
 				body.flip_h = false
 			
 		position += velocity
-		position = position.clamp(Vector2.ZERO, Vector2(screen_size.x - $CollisionShape2D.shape.size.x * scale.x, screen_size.y))
+		position = position.clamp(Vector2.ZERO, Vector2(screen_size.x - $CollisionShape2D.shape.size.x * scale.x + 100, screen_size.y))
+
 
 func _input(event: InputEvent) -> void:
 	var player_w = $CollisionShape2D.shape.size.x/2
@@ -66,14 +67,15 @@ func _input(event: InputEvent) -> void:
 func useprop(prop_name):
 	var bamboo_image = $TextureRect
 	var bamboo_collision = $CollisionShape2D
-	
+	print(prop_name)
+	print(bamboo_image.scale.x)
 	match prop_name:
 		"Prop_long":
-			if bamboo_collision.scale.x <= 2:
+			if bamboo_image.scale.x <= 1:
 				bamboo_image.scale.x += 0.2
 				bamboo_collision.scale.x += 0.2
 		"Prop_short":
-			if bamboo_collision.scale.x >= 0.2:
+			if bamboo_image.scale.x >= 0.2:
 				bamboo_image.scale.x -= 0.2
 				bamboo_collision.scale.x -= 0.2
 		"Prop_operation_reversal":

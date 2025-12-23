@@ -8,6 +8,7 @@ radius = 16.507574
 
 [node name="Prop_long" type="Area2D"]
 script = ExtResource("1_b2und")
+prop_name = "Prop_long"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 36.0

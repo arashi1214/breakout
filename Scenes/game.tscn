@@ -99,9 +99,9 @@ text = "0"
 [node name="Start" type="Button" parent="UI"]
 layout_mode = 0
 offset_left = 271.0
-offset_top = 477.0
+offset_top = 556.0
 offset_right = 486.0
-offset_bottom = 524.0
+offset_bottom = 603.0
 theme_override_fonts/font = ExtResource("5_1l0tm")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("10_o5yvi")
@@ -141,7 +141,6 @@ theme_override_styles/normal = ExtResource("10_o5yvi")
 text = "Next Level"
 
 [node name="Tips" type="Label" parent="UI"]
-visible = false
 layout_mode = 0
 offset_left = 252.0
 offset_top = 365.0
@@ -149,8 +148,8 @@ offset_right = 492.0
 offset_bottom = 502.0
 text = "Tips
 點選畫面可重新發球
-紅色磚塊會扣血
-綠色磚塊會回血
+紫色磚塊會扣血
+藍色磚塊會回血
 打完全部一般磚塊即可進入下一關"
 
 [node name="數值調整" parent="." node_paths=PackedStringArray("player", "GameController") instance=ExtResource("6_1l0tm")]

@@ -8,6 +8,7 @@ radius = 16.5
 
 [node name="Prop_short" type="Area2D"]
 script = ExtResource("1_wwi1l")
+prop_name = "Prop_short"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 36.0

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dbaufiotrn8eq" path="res://Assets/齊絨/表情777.png" id="7_f7am4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0qk3"]
-size = Vector2(148.9755, 8)
+size = Vector2(299.2578, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3y5cq"]
 animations = [{
@@ -65,7 +65,8 @@ scale = Vector2(0.5, 1)
 texture = ExtResource("3_f7am4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(94.0898, 36)
+position = Vector2(93.436386, 36)
+scale = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_y0qk3")
 
 [node name="Timer" type="Timer" parent="."]
