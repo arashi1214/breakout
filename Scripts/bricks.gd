@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @export var HP = 1
 @export var propstable : RandomTable
+@export var bricksImage : Array[Texture2D] = []
 
 signal has_prop(prop_name, create_position)
 signal triger_buff(buff_name)
@@ -20,7 +21,7 @@ func _ready() -> void:
 		_:
 			buff_name = kind_name
 			
-	update_color()
+	update_image()
 
 func on_collision():
 	HP -= 1
@@ -33,11 +34,12 @@ func on_collision():
 			emit_signal("triger_buff", buff_name)
 		call_deferred("queue_free")
 
-func update_color():
+func update_image():
+	var image = $Sprite2D
 	match kind_name:
 		"Medicine":
-			$Polygon2D.color = "Green"
+			image.texture = bricksImage[1]
 		"Poison":
-			$Polygon2D.color = "Red"
+			image.texture = bricksImage[2]
 		"Block":
-			$Polygon2D.color = "Gray"		
+			image.texture = bricksImage[3]
